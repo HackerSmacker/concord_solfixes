@@ -24,7 +24,7 @@
 CCORDcode discord_create_stage_instance(
     struct discord *client,
     struct discord_create_stage_instance *params,
-    struct discord_ret_stage_instance *ret);
+    struct discord_recv_stage_instance *ret);
 
 /**
  * @brief Gets the stage instance associated with the Stage channel, if it
@@ -37,7 +37,7 @@ CCORDcode discord_create_stage_instance(
  */
 CCORDcode discord_get_stage_instance(struct discord *client,
                                      u64snowflake channel_id,
-                                     struct discord_ret_stage_instance *ret);
+                                     struct discord_recv_stage_instance *ret);
 
 /**
  * @brief Updates fields of an existing Stage instance
@@ -53,7 +53,7 @@ CCORDcode discord_modify_stage_instance(
     struct discord *client,
     u64snowflake channel_id,
     struct discord_modify_stage_instance *params,
-    struct discord_ret_stage_instance *ret);
+    struct discord_recv_stage_instance *ret);
 
 /**
  * @brief Deletes the Stage instance
@@ -66,7 +66,7 @@ CCORDcode discord_modify_stage_instance(
  */
 CCORDcode discord_delete_stage_instance(struct discord *client,
                                         u64snowflake channel_id,
-                                        struct discord_ret *ret);
+                                        struct discord_recv *ret);
 
 /** @} DiscordAPIStageInstance */
 

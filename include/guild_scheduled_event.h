@@ -25,7 +25,7 @@ CCORDcode discord_list_guild_scheduled_events(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_list_guild_scheduled_events *params,
-    struct discord_ret_guild_scheduled_event *ret);
+    struct discord_recv_guild_scheduled_event *ret);
 
 /**
  * @brief Create a guild scheduled event
@@ -42,7 +42,7 @@ CCORDcode discord_create_guild_scheduled_event(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_create_guild_scheduled_event *params,
-    struct discord_ret_guild_scheduled_event *ret);
+    struct discord_recv_guild_scheduled_event *ret);
 
 /**
  * @brief Get a guild scheduled event
@@ -59,7 +59,7 @@ CCORDcode discord_get_guild_scheduled_event(
     u64snowflake guild_id,
     u64snowflake guild_scheduled_event_id,
     struct discord_get_guild_scheduled_event *params,
-    struct discord_ret_guild_scheduled_event *ret);
+    struct discord_recv_guild_scheduled_event *ret);
 
 /**
  * @brief Modify a guild scheduled event
@@ -77,7 +77,7 @@ CCORDcode discord_modify_guild_scheduled_event(
     u64snowflake guild_id,
     u64snowflake guild_scheduled_event_id,
     struct discord_modify_guild_scheduled_event *params,
-    struct discord_ret_guild_scheduled_event *ret);
+    struct discord_recv_guild_scheduled_event *ret);
 
 /**
  * @brief Delete a guild scheduled event
@@ -92,7 +92,7 @@ CCORDcode discord_delete_guild_scheduled_event(
     struct discord *client,
     u64snowflake guild_id,
     u64snowflake guild_scheduled_event_id,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Get a list of members subscribed to a guild scheduled event
@@ -111,7 +111,7 @@ CCORDcode discord_get_guild_scheduled_event_users(
     u64snowflake guild_id,
     u64snowflake guild_scheduled_event_id,
     struct discord_get_guild_scheduled_event_users *params,
-    struct discord_ret_guild_scheduled_event_users *ret);
+    struct discord_recv_guild_scheduled_event_users *ret);
 
 /** @} DiscordAPIGuildScheduledEvent */
 

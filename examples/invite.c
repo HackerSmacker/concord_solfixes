@@ -57,7 +57,7 @@ on_invite_get(struct discord *client, const struct discord_message *event)
 {
     if (event->author->bot) return;
 
-    struct discord_ret_invite ret = {
+    struct discord_recv_invite ret = {
         .done = &done,
         .fail = &fail,
         .keep = event,
@@ -75,7 +75,7 @@ on_invite_delete(struct discord *client, const struct discord_message *event)
 {
     if (event->author->bot) return;
 
-    struct discord_ret_invite ret = {
+    struct discord_recv_invite ret = {
         .done = &done,
         .fail = &fail,
         .keep = event,

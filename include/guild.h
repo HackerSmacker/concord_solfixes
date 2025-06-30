@@ -23,7 +23,7 @@
  */
 CCORDcode discord_create_guild(struct discord *client,
                                struct discord_create_guild *params,
-                               struct discord_ret_guild *ret);
+                               struct discord_recv_guild *ret);
 
 /**
  * @brief Get the guild with given id
@@ -39,7 +39,7 @@ CCORDcode discord_create_guild(struct discord *client,
  */
 CCORDcode discord_get_guild(struct discord *client,
                             u64snowflake guild_id,
-                            struct discord_ret_guild *ret);
+                            struct discord_recv_guild *ret);
 
 /**
  * @brief Get the preview for the given guild
@@ -52,7 +52,7 @@ CCORDcode discord_get_guild(struct discord *client,
  */
 CCORDcode discord_get_guild_preview(struct discord *client,
                                     u64snowflake guild_id,
-                                    struct discord_ret_guild_preview *ret);
+                                    struct discord_recv_guild_preview *ret);
 
 /**
  * @brief Modify a guild's settings
@@ -68,7 +68,7 @@ CCORDcode discord_get_guild_preview(struct discord *client,
 CCORDcode discord_modify_guild(struct discord *client,
                                u64snowflake guild_id,
                                struct discord_modify_guild *params,
-                               struct discord_ret_guild *ret);
+                               struct discord_recv_guild *ret);
 
 /**
  * @brief Delete a guild permanently, user must be owner
@@ -81,7 +81,7 @@ CCORDcode discord_modify_guild(struct discord *client,
  */
 CCORDcode discord_delete_guild(struct discord *client,
                                u64snowflake guild_id,
-                               struct discord_ret *ret);
+                               struct discord_recv *ret);
 
 /**
  * @brief Fetch channels from given guild. Does not include threads
@@ -93,7 +93,7 @@ CCORDcode discord_delete_guild(struct discord *client,
  */
 CCORDcode discord_get_guild_channels(struct discord *client,
                                      u64snowflake guild_id,
-                                     struct discord_ret_channel *ret);
+                                     struct discord_recv_channel *ret);
 
 /**
  * @brief Create a new guild channel
@@ -113,7 +113,7 @@ CCORDcode discord_create_guild_channel(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_create_guild_channel *params,
-    struct discord_ret_channel *ret);
+    struct discord_recv_channel *ret);
 
 /**
  * @brief Modify guild channel positions
@@ -130,7 +130,7 @@ CCORDcode discord_modify_guild_channel_positions(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_modify_guild_channel_positions *params,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Get guild member of a guild from given user id
@@ -144,7 +144,7 @@ CCORDcode discord_modify_guild_channel_positions(
 CCORDcode discord_get_guild_member(struct discord *client,
                                    u64snowflake guild_id,
                                    u64snowflake user_id,
-                                   struct discord_ret_guild_member *ret);
+                                   struct discord_recv_guild_member *ret);
 
 /**
  * @brief Get guild members of a guild
@@ -158,7 +158,7 @@ CCORDcode discord_get_guild_member(struct discord *client,
 CCORDcode discord_list_guild_members(struct discord *client,
                                      u64snowflake guild_id,
                                      struct discord_list_guild_members *params,
-                                     struct discord_ret_guild_member *ret);
+                                     struct discord_recv_guild_member *ret);
 
 /**
  * @brief Get guild members whose username or nickname starts with a provided
@@ -174,7 +174,7 @@ CCORDcode discord_search_guild_members(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_search_guild_members *params,
-    struct discord_ret_guild_member *ret);
+    struct discord_recv_guild_member *ret);
 
 /**
  * @brief Adds a user to the guild
@@ -195,7 +195,7 @@ CCORDcode discord_add_guild_member(struct discord *client,
                                    u64snowflake guild_id,
                                    u64snowflake user_id,
                                    struct discord_add_guild_member *params,
-                                   struct discord_ret_guild_member *ret);
+                                   struct discord_recv_guild_member *ret);
 
 /**
  * @brief Modify retibutes of a guild member
@@ -214,7 +214,7 @@ CCORDcode discord_modify_guild_member(
     u64snowflake guild_id,
     u64snowflake user_id,
     struct discord_modify_guild_member *params,
-    struct discord_ret_guild_member *ret);
+    struct discord_recv_guild_member *ret);
 
 /**
  * @brief Modifies the current member in the guild
@@ -230,7 +230,7 @@ CCORDcode discord_modify_current_member(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_modify_current_member *params,
-    struct discord_ret_guild_member *ret);
+    struct discord_recv_guild_member *ret);
 
 /**
  * @brief Adds a role to a guild member
@@ -250,7 +250,7 @@ CCORDcode discord_add_guild_member_role(
     u64snowflake user_id,
     u64snowflake role_id,
     struct discord_add_guild_member_role *params,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Removes a role from a guild member
@@ -271,7 +271,7 @@ CCORDcode discord_remove_guild_member_role(
     u64snowflake user_id,
     u64snowflake role_id,
     struct discord_remove_guild_member_role *params,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Remove a member from a guild
@@ -290,7 +290,7 @@ CCORDcode discord_remove_guild_member(
     u64snowflake guild_id,
     u64snowflake user_id,
     struct discord_remove_guild_member *params,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Fetch banned users for given guild
@@ -303,7 +303,7 @@ CCORDcode discord_remove_guild_member(
  */
 CCORDcode discord_get_guild_bans(struct discord *client,
                                  u64snowflake guild_id,
-                                 struct discord_ret_ban *ret);
+                                 struct discord_recv_ban *ret);
 
 /**
  * @brief Fetch banned user from given guild
@@ -318,7 +318,7 @@ CCORDcode discord_get_guild_bans(struct discord *client,
 CCORDcode discord_get_guild_ban(struct discord *client,
                                 u64snowflake guild_id,
                                 u64snowflake user_id,
-                                struct discord_ret_ban *ret);
+                                struct discord_recv_ban *ret);
 
 /**
  * @brief Bans user from a given guild
@@ -336,7 +336,7 @@ CCORDcode discord_create_guild_ban(struct discord *client,
                                    u64snowflake guild_id,
                                    u64snowflake user_id,
                                    struct discord_create_guild_ban *params,
-                                   struct discord_ret *ret);
+                                   struct discord_recv *ret);
 
 /**
  * @brief Remove the ban for a user
@@ -354,7 +354,7 @@ CCORDcode discord_remove_guild_ban(struct discord *client,
                                    u64snowflake guild_id,
                                    u64snowflake user_id,
                                    struct discord_remove_guild_ban *params,
-                                   struct discord_ret *ret);
+                                   struct discord_recv *ret);
 
 /**
  * @brief Get guild roles
@@ -366,7 +366,7 @@ CCORDcode discord_remove_guild_ban(struct discord *client,
  */
 CCORDcode discord_get_guild_roles(struct discord *client,
                                   u64snowflake guild_id,
-                                  struct discord_ret_role *ret);
+                                  struct discord_recv_role *ret);
 
 /**
  * @brief Create a new guild role
@@ -382,7 +382,7 @@ CCORDcode discord_get_guild_roles(struct discord *client,
 CCORDcode discord_create_guild_role(struct discord *client,
                                     u64snowflake guild_id,
                                     struct discord_create_guild_role *params,
-                                    struct discord_ret_role *ret);
+                                    struct discord_recv_role *ret);
 
 /**
  * @brief Returns the number of members that would be removed in a prune
@@ -401,7 +401,7 @@ CCORDcode discord_get_guild_prune_count(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_get_guild_prune_count *params,
-    struct discord_ret_prune_count *ret);
+    struct discord_recv_prune_count *ret);
 
 /**
  * @brief Begin guild prune operation
@@ -419,7 +419,7 @@ CCORDcode discord_get_guild_prune_count(
 CCORDcode discord_begin_guild_prune(struct discord *client,
                                     u64snowflake guild_id,
                                     struct discord_begin_guild_prune *params,
-                                    struct discord_ret *ret);
+                                    struct discord_recv *ret);
 
 /**
  * @brief Get voice regions (includes VIP servers when the guild is
@@ -433,7 +433,7 @@ CCORDcode discord_begin_guild_prune(struct discord *client,
 CCORDcode discord_get_guild_voice_regions(
     struct discord *client,
     u64snowflake guild_id,
-    struct discord_ret_voice_region *ret);
+    struct discord_recv_voice_region *ret);
 
 /**
  * @brief Get guild invites
@@ -446,7 +446,7 @@ CCORDcode discord_get_guild_voice_regions(
  */
 CCORDcode discord_get_guild_invites(struct discord *client,
                                     u64snowflake guild_id,
-                                    struct discord_ret_invite *ret);
+                                    struct discord_recv_invite *ret);
 
 /**
  * @brief Get guild integrations
@@ -459,7 +459,7 @@ CCORDcode discord_get_guild_invites(struct discord *client,
  */
 CCORDcode discord_get_guild_integrations(struct discord *client,
                                          u64snowflake guild_id,
-                                         struct discord_ret_integration *ret);
+                                         struct discord_recv_integration *ret);
 
 /**
  * @brief Deletes the integration for the guild. It will also delete any
@@ -479,7 +479,7 @@ CCORDcode discord_delete_guild_integrations(
     u64snowflake guild_id,
     u64snowflake integration_id,
     struct discord_delete_guild_integrations *params,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Get a guild widget settings
@@ -493,7 +493,7 @@ CCORDcode discord_delete_guild_integrations(
 CCORDcode discord_get_guild_widget_settings(
     struct discord *client,
     u64snowflake guild_id,
-    struct discord_ret_guild_widget_settings *ret);
+    struct discord_recv_guild_widget_settings *ret);
 
 /**
  * @brief Modify a guild widget settings
@@ -510,7 +510,7 @@ CCORDcode discord_modify_guild_widget(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_guild_widget_settings *params,
-    struct discord_ret_guild_widget_settings *ret);
+    struct discord_recv_guild_widget_settings *ret);
 
 /**
  * @brief Get the widget for the guild
@@ -522,7 +522,7 @@ CCORDcode discord_modify_guild_widget(
  */
 CCORDcode discord_get_guild_widget(struct discord *client,
                                    u64snowflake guild_id,
-                                   struct discord_ret_guild_widget *ret);
+                                   struct discord_recv_guild_widget *ret);
 
 /**
  * @brief Get invite from a given guild
@@ -534,7 +534,7 @@ CCORDcode discord_get_guild_widget(struct discord *client,
  */
 CCORDcode discord_get_guild_vanity_url(struct discord *client,
                                        u64snowflake guild_id,
-                                       struct discord_ret_invite *ret);
+                                       struct discord_recv_invite *ret);
 
 /* TODO: handle ContentType: image/png and add 'struct discord_png' */
 #if 0
@@ -551,7 +551,7 @@ CCORDcode discord_get_guild_widget_image(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_get_guild_widget_image *params,
-    struct discord_ret_png *ret);
+    struct discord_recv_png *ret);
 #endif
 
 /**
@@ -565,7 +565,7 @@ CCORDcode discord_get_guild_widget_image(
 CCORDcode discord_get_guild_welcome_screen(
     struct discord *client,
     u64snowflake guild_id,
-    struct discord_ret_welcome_screen *ret);
+    struct discord_recv_welcome_screen *ret);
 
 /**
  * @brief Modify the Welcome Screen for the guild
@@ -581,7 +581,7 @@ CCORDcode discord_modify_guild_welcome_screen(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_modify_guild_welcome_screen *params,
-    struct discord_ret_welcome_screen *ret);
+    struct discord_recv_welcome_screen *ret);
 
 /**
  * @brief Updates the current user's voice state
@@ -599,7 +599,7 @@ CCORDcode discord_modify_current_user_voice_state(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_modify_current_user_voice_state *params,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Updates user's voice state
@@ -618,7 +618,7 @@ CCORDcode discord_modify_user_voice_state(
     u64snowflake guild_id,
     u64snowflake user_id,
     struct discord_modify_user_voice_state *params,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Modify the positions of a given role list for the guild
@@ -635,7 +635,7 @@ CCORDcode discord_modify_guild_role_positions(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_modify_guild_role_positions *params,
-    struct discord_ret_role *ret);
+    struct discord_recv_role *ret);
 
 /**
  * @brief Modify a guild role
@@ -653,7 +653,7 @@ CCORDcode discord_modify_guild_role(struct discord *client,
                                     u64snowflake guild_id,
                                     u64snowflake role_id,
                                     struct discord_modify_guild_role *params,
-                                    struct discord_ret_role *ret);
+                                    struct discord_recv_role *ret);
 
 /**
  * @brief Delete a guild role
@@ -671,7 +671,7 @@ CCORDcode discord_delete_guild_role(struct discord *client,
                                     u64snowflake guild_id,
                                     u64snowflake role_id,
                                     struct discord_delete_guild_role *params,
-                                    struct discord_ret *ret);
+                                    struct discord_recv *ret);
 
 /** @example guild.c
  * Demonstrates a couple use cases of the Guild API */

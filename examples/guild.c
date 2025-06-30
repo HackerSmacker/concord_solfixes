@@ -175,7 +175,7 @@ on_role_list(struct discord *client, const struct discord_message *event)
 {
     if (event->author->bot) return;
 
-    struct discord_ret_role ret = {
+    struct discord_recv_role ret = {
         .done = &done_get_guild_roles,
         .fail = &fail_get_guild_roles,
     };
@@ -213,7 +213,7 @@ on_member_get(struct discord *client, const struct discord_message *event)
         return;
     }
 
-    struct discord_ret_guild_member ret = {
+    struct discord_recv_guild_member ret = {
         .done = &done_get_guild_member,
         .fail = &fail_get_guild_member,
     };
@@ -268,7 +268,7 @@ on_channels_get(struct discord *client, const struct discord_message *event)
 {
     if (event->author->bot) return;
 
-    struct discord_ret_channel ret = {
+    struct discord_recv_channel ret = {
         .done = &done_get_guild_channels,
         .fail = &fail_get_guild_channels,
         .keep = event,

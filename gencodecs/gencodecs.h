@@ -39,7 +39,7 @@ GENCODECS_PP_INCLUDE("discord-metadata.h")
 static char *
 _gc_strndup(const char *src, size_t len)
 {
-    char *dest = malloc(len + 1);
+    char *dest = discord_malloc(1, len + 1);
     memcpy(dest, src, len);
     dest[len] = '\0';
     return dest;

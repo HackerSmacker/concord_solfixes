@@ -71,7 +71,7 @@ read_input(void *p_client)
         }
         else { /* reset active chat */
             struct discord_channel *ret_channel = NULL;
-            struct discord_ret_channel ret = { .sync = &ret_channel };
+            struct discord_recv_channel ret = { .sync = &ret_channel };
             struct discord_create_dm params = { .recipient_id = recipient_id };
 
             if (CCORD_OK == discord_create_dm(client, &params, &ret)) {
@@ -80,7 +80,7 @@ read_input(void *p_client)
             }
         }
 
-        struct discord_ret_message ret = { .sync = DISCORD_SYNC_FLAG };
+        struct discord_recv_message ret = { .sync = DISCORD_SYNC_FLAG };
         struct discord_create_message params = { .content = msg };
 
         discord_create_message(client, dm_channel_id, &params, &ret);

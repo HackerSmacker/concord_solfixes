@@ -8,7 +8,7 @@
 #define DISCORD_CHANNEL_H
 
 /* forward declaration */
-struct discord_ret_user;
+struct discord_recv_user;
 /**/
 
 /** @defgroup DiscordAPIChannel Channel
@@ -28,7 +28,7 @@ struct discord_ret_user;
  */
 CCORDcode discord_get_channel(struct discord *client,
                               u64snowflake channel_id,
-                              struct discord_ret_channel *ret);
+                              struct discord_recv_channel *ret);
 
 /**
  * @brief Update a channel's settings
@@ -42,7 +42,7 @@ CCORDcode discord_get_channel(struct discord *client,
 CCORDcode discord_modify_channel(struct discord *client,
                                  u64snowflake channel_id,
                                  struct discord_modify_channel *params,
-                                 struct discord_ret_channel *ret);
+                                 struct discord_recv_channel *ret);
 
 /**
  * @brief Delete a channel, or close a private message
@@ -63,7 +63,7 @@ CCORDcode discord_modify_channel(struct discord *client,
 CCORDcode discord_delete_channel(struct discord *client,
                                  u64snowflake channel_id,
                                  struct discord_delete_channel *params,
-                                 struct discord_ret_channel *ret);
+                                 struct discord_recv_channel *ret);
 
 /**
  * @brief Get messages for a given channel
@@ -85,7 +85,7 @@ CCORDcode discord_get_channel_messages(
     struct discord *client,
     u64snowflake channel_id,
     struct discord_get_channel_messages *params,
-    struct discord_ret_message *ret);
+    struct discord_recv_message *ret);
 
 /**
  * @brief Get a specific message in the channel
@@ -100,7 +100,7 @@ CCORDcode discord_get_channel_messages(
 CCORDcode discord_get_channel_message(struct discord *client,
                                       u64snowflake channel_id,
                                       u64snowflake message_id,
-                                      struct discord_ret_message *ret);
+                                      struct discord_recv_message *ret);
 
 /**
  * @brief Post a message to a guild text or DM channel
@@ -115,7 +115,7 @@ CCORDcode discord_get_channel_message(struct discord *client,
 CCORDcode discord_create_message(struct discord *client,
                                  u64snowflake channel_id,
                                  struct discord_create_message *params,
-                                 struct discord_ret_message *ret);
+                                 struct discord_recv_message *ret);
 
 /**
  * @brief Crosspost a message in a News Channel to following channels
@@ -133,7 +133,7 @@ CCORDcode discord_create_message(struct discord *client,
 CCORDcode discord_crosspost_message(struct discord *client,
                                     u64snowflake channel_id,
                                     u64snowflake message_id,
-                                    struct discord_ret_message *ret);
+                                    struct discord_recv_message *ret);
 
 /**
  * @brief Create a reaction for the message
@@ -151,7 +151,7 @@ CCORDcode discord_create_reaction(struct discord *client,
                                   u64snowflake message_id,
                                   u64snowflake emoji_id,
                                   const char emoji_name[],
-                                  struct discord_ret *ret);
+                                  struct discord_recv *ret);
 
 /**
  * @brief Delete a reaction the current user has made for the message
@@ -169,7 +169,7 @@ CCORDcode discord_delete_own_reaction(struct discord *client,
                                       u64snowflake message_id,
                                       u64snowflake emoji_id,
                                       const char emoji_name[],
-                                      struct discord_ret *ret);
+                                      struct discord_recv *ret);
 
 /**
  * @brief Deletes another user's reaction
@@ -189,7 +189,7 @@ CCORDcode discord_delete_user_reaction(struct discord *client,
                                        u64snowflake user_id,
                                        u64snowflake emoji_id,
                                        const char emoji_name[],
-                                       struct discord_ret *ret);
+                                       struct discord_recv *ret);
 
 /**
  * @brief Get a list of users that reacted with given emoji
@@ -209,7 +209,7 @@ CCORDcode discord_get_reactions(struct discord *client,
                                 u64snowflake emoji_id,
                                 const char emoji_name[],
                                 struct discord_get_reactions *params,
-                                struct discord_ret_user *ret);
+                                struct discord_recv_user *ret);
 
 /**
  * @brief Deletes all reactions from message
@@ -223,7 +223,7 @@ CCORDcode discord_get_reactions(struct discord *client,
 CCORDcode discord_delete_all_reactions(struct discord *client,
                                        u64snowflake channel_id,
                                        u64snowflake message_id,
-                                       struct discord_ret *ret);
+                                       struct discord_recv *ret);
 
 /**
  * @brief Deletes all the reactions for a given emoji on message
@@ -242,7 +242,7 @@ CCORDcode discord_delete_all_reactions_for_emoji(struct discord *client,
                                                  u64snowflake message_id,
                                                  u64snowflake emoji_id,
                                                  const char emoji_name[],
-                                                 struct discord_ret *ret);
+                                                 struct discord_recv *ret);
 
 /**
  * @brief Edit a previously sent message
@@ -259,7 +259,7 @@ CCORDcode discord_edit_message(struct discord *client,
                                u64snowflake channel_id,
                                u64snowflake message_id,
                                struct discord_edit_message *params,
-                               struct discord_ret_message *ret);
+                               struct discord_recv_message *ret);
 
 /**
  * @brief Delete a message
@@ -275,7 +275,7 @@ CCORDcode discord_delete_message(struct discord *client,
                                  u64snowflake channel_id,
                                  u64snowflake message_id,
                                  struct discord_delete_message *params,
-                                 struct discord_ret *ret);
+                                 struct discord_recv *ret);
 
 /**
  * @brief Delete multiple messages in a single request
@@ -290,7 +290,7 @@ CCORDcode discord_bulk_delete_messages(
     struct discord *client,
     u64snowflake channel_id,
     struct discord_bulk_delete_messages *params,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Edit the channel permission overwrites for a user or role in a
@@ -308,7 +308,7 @@ CCORDcode discord_edit_channel_permissions(
     u64snowflake channel_id,
     u64snowflake overwrite_id,
     struct discord_edit_channel_permissions *params,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Get invites (with invite metadata) for the channel
@@ -320,7 +320,7 @@ CCORDcode discord_edit_channel_permissions(
  */
 CCORDcode discord_get_channel_invites(struct discord *client,
                                       u64snowflake channel_id,
-                                      struct discord_ret_invite *ret);
+                                      struct discord_recv_invite *ret);
 
 /**
  * @brief Create a new invite for the channel
@@ -335,7 +335,7 @@ CCORDcode discord_create_channel_invite(
     struct discord *client,
     u64snowflake channel_id,
     struct discord_create_channel_invite *params,
-    struct discord_ret_invite *ret);
+    struct discord_recv_invite *ret);
 
 /**
  * @brief Delete a channel permission overwrite for a user or role in a
@@ -353,7 +353,7 @@ CCORDcode discord_delete_channel_permission(
     u64snowflake channel_id,
     u64snowflake overwrite_id,
     struct discord_delete_channel_permission *params,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Post a typing indicator for the specified channel
@@ -365,7 +365,7 @@ CCORDcode discord_delete_channel_permission(
  */
 CCORDcode discord_trigger_typing_indicator(struct discord *client,
                                            u64snowflake channel_id,
-                                           struct discord_ret *ret);
+                                           struct discord_recv *ret);
 
 /**
  * @brief Follow a News Channel to send messages to a target channel
@@ -381,7 +381,7 @@ CCORDcode discord_follow_news_channel(
     struct discord *client,
     u64snowflake channel_id,
     struct discord_follow_news_channel *params,
-    struct discord_ret_followed_channel *ret);
+    struct discord_recv_followed_channel *ret);
 
 /**
  * @brief Get all pinned messages in the channel
@@ -393,7 +393,7 @@ CCORDcode discord_follow_news_channel(
  */
 CCORDcode discord_get_pinned_messages(struct discord *client,
                                       u64snowflake channel_id,
-                                      struct discord_ret_message *ret);
+                                      struct discord_recv_message *ret);
 
 /**
  * @brief Pin a message to a channel
@@ -409,7 +409,7 @@ CCORDcode discord_pin_message(struct discord *client,
                               u64snowflake channel_id,
                               u64snowflake message_id,
                               struct discord_pin_message *params,
-                              struct discord_ret *ret);
+                              struct discord_recv *ret);
 
 /**
  * @brief Unpin a message from a channel
@@ -425,7 +425,7 @@ CCORDcode discord_unpin_message(struct discord *client,
                                 u64snowflake channel_id,
                                 u64snowflake message_id,
                                 struct discord_unpin_message *params,
-                                struct discord_ret *ret);
+                                struct discord_recv *ret);
 
 /**
  * @brief Adds a recipient to a Group DM using their access token
@@ -442,7 +442,7 @@ CCORDcode discord_group_dm_add_recipient(
     u64snowflake channel_id,
     u64snowflake user_id,
     struct discord_group_dm_add_recipient *params,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Removes a recipient from a Group DM
@@ -456,7 +456,7 @@ CCORDcode discord_group_dm_add_recipient(
 CCORDcode discord_group_dm_remove_recipient(struct discord *client,
                                             u64snowflake channel_id,
                                             u64snowflake user_id,
-                                            struct discord_ret *ret);
+                                            struct discord_recv *ret);
 
 /**
  * @brief Creates a new thread from an existing message
@@ -474,7 +474,7 @@ CCORDcode discord_start_thread_with_message(
     u64snowflake channel_id,
     u64snowflake message_id,
     struct discord_start_thread_with_message *params,
-    struct discord_ret_channel *ret);
+    struct discord_recv_channel *ret);
 
 /**
  * @brief Creates a new thread that is not connected to an existing message
@@ -490,7 +490,7 @@ CCORDcode discord_start_thread_without_message(
     struct discord *client,
     u64snowflake channel_id,
     struct discord_start_thread_without_message *params,
-    struct discord_ret_channel *ret);
+    struct discord_recv_channel *ret);
 
 /**
  * @brief Adds the current user to an un-archived thread
@@ -503,7 +503,7 @@ CCORDcode discord_start_thread_without_message(
  */
 CCORDcode discord_join_thread(struct discord *client,
                               u64snowflake channel_id,
-                              struct discord_ret *ret);
+                              struct discord_recv *ret);
 
 /**
  * @brief Adds another member to an un-archived thread
@@ -518,7 +518,7 @@ CCORDcode discord_join_thread(struct discord *client,
 CCORDcode discord_add_thread_member(struct discord *client,
                                     u64snowflake channel_id,
                                     u64snowflake user_id,
-                                    struct discord_ret *ret);
+                                    struct discord_recv *ret);
 
 /**
  * @brief Removes the current user from a un-archived thread
@@ -531,7 +531,7 @@ CCORDcode discord_add_thread_member(struct discord *client,
  */
 CCORDcode discord_leave_thread(struct discord *client,
                                u64snowflake channel_id,
-                               struct discord_ret *ret);
+                               struct discord_recv *ret);
 
 /**
  * @brief Removes another member from a un-archived thread
@@ -547,7 +547,7 @@ CCORDcode discord_leave_thread(struct discord *client,
 CCORDcode discord_remove_thread_member(struct discord *client,
                                        u64snowflake channel_id,
                                        u64snowflake user_id,
-                                       struct discord_ret *ret);
+                                       struct discord_recv *ret);
 
 /**
  * @brief Get members from a given thread channel
@@ -561,7 +561,7 @@ CCORDcode discord_remove_thread_member(struct discord *client,
  */
 CCORDcode discord_list_thread_members(struct discord *client,
                                       u64snowflake channel_id,
-                                      struct discord_ret_thread_member *ret);
+                                      struct discord_recv_thread_member *ret);
 
 /**
  * @brief Get public archived threads in a given channel
@@ -578,7 +578,7 @@ CCORDcode discord_list_public_archived_threads(
     u64snowflake channel_id,
     u64unix_ms before,
     int limit,
-    struct discord_ret_thread_response_body *ret);
+    struct discord_recv_thread_response_body *ret);
 
 /**
  * @brief Get private archived threads in a given channel
@@ -595,7 +595,7 @@ CCORDcode discord_list_private_archived_threads(
     u64snowflake channel_id,
     u64unix_ms before,
     int limit,
-    struct discord_ret_thread_response_body *ret);
+    struct discord_recv_thread_response_body *ret);
 
 /**
  * @brief Get private archived threads that current user has joined
@@ -612,7 +612,7 @@ CCORDcode discord_list_joined_private_archived_threads(
     u64snowflake channel_id,
     u64unix_ms before,
     int limit,
-    struct discord_ret_thread_response_body *ret);
+    struct discord_recv_thread_response_body *ret);
 
 /** @defgroup DiscordAPIChannelHelper Helper functions
  * @brief Custom helper functions
@@ -631,7 +631,7 @@ CCORDcode discord_get_channel_at_pos(struct discord *client,
                                      u64snowflake guild_id,
                                      enum discord_channel_types type,
                                      int position,
-                                     struct discord_ret_channel *ret);
+                                     struct discord_recv_channel *ret);
 
 /**
  * @brief Append to an overwrite list

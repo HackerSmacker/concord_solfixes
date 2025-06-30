@@ -86,7 +86,7 @@ on_list_guild_emojis(struct discord *client,
 {
     if (event->author->bot) return;
 
-    struct discord_ret_emoji ret = {
+    struct discord_recv_emoji ret = {
         .done = &done_list_guild_emojis,
         .fail = &fail_list_guild_emojis,
         .keep = event,
@@ -132,7 +132,7 @@ on_get_guild_emoji(struct discord *client, const struct discord_message *event)
     sscanf(event->content, "%" SCNu64, &emoji_id);
     if (!emoji_id) return;
 
-    struct discord_ret_emoji ret = {
+    struct discord_recv_emoji ret = {
         .done = &done_get_guild_emoji,
         .fail = &fail_get_guild_emoji,
         .keep = event,

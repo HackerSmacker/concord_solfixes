@@ -10,7 +10,7 @@ CCORDcode
 discord_get_invite(struct discord *client,
                    char *invite_code,
                    struct discord_get_invite *params,
-                   struct discord_ret_invite *ret)
+                   struct discord_recv_invite *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -27,7 +27,7 @@ CCORDcode
 discord_delete_invite(struct discord *client,
                       char *invite_code,
                       struct discord_delete_invite *params,
-                      struct discord_ret_invite *ret)
+                      struct discord_recv_invite *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, NOT_EMPTY_STR(invite_code), CCORD_BAD_PARAMETER, "");

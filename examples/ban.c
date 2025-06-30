@@ -95,7 +95,7 @@ on_prune_count(struct discord *client, const struct discord_message *event)
     if (endp != event->content) {
         struct discord_get_guild_prune_count params = { .days = days };
         discord_get_guild_prune_count(client, event->guild_id, &params,
-                                      &(struct discord_ret_prune_count){
+                                      &(struct discord_recv_prune_count){
                                           .done = done_get_prune_count,
                                           .keep = event,
                                           .data = (void *)days,

@@ -7,7 +7,7 @@
 #include "discord-request.h"
 
 CCORDcode
-discord_get_current_user(struct discord *client, struct discord_ret_user *ret)
+discord_get_current_user(struct discord *client, struct discord_recv_user *ret)
 {
     struct discord_attributes attr = { 0 };
     DISCORD_ATTR_INIT(attr, discord_user, ret, NULL);
@@ -18,7 +18,7 @@ discord_get_current_user(struct discord *client, struct discord_ret_user *ret)
 CCORDcode
 discord_get_user(struct discord *client,
                  u64snowflake user_id,
-                 struct discord_ret_user *ret)
+                 struct discord_recv_user *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, user_id != 0, CCORD_BAD_PARAMETER, "");
@@ -30,7 +30,7 @@ discord_get_user(struct discord *client,
 CCORDcode
 discord_modify_current_user(struct discord *client,
                             struct discord_modify_current_user *params,
-                            struct discord_ret_user *ret)
+                            struct discord_recv_user *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -44,7 +44,7 @@ discord_modify_current_user(struct discord *client,
 
 CCORDcode
 discord_get_current_user_guilds(struct discord *client,
-                                struct discord_ret_guild *ret)
+                                struct discord_recv_guild *ret)
 {
     struct discord_attributes attr = { 0 };
     DISCORD_ATTR_INIT(attr, discord_guild, ret, NULL);
@@ -55,7 +55,7 @@ discord_get_current_user_guilds(struct discord *client,
 CCORDcode
 discord_leave_guild(struct discord *client,
                     u64snowflake guild_id,
-                    struct discord_ret *ret)
+                    struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { "{}", 2, true };
@@ -68,7 +68,7 @@ discord_leave_guild(struct discord *client,
 CCORDcode
 discord_create_dm(struct discord *client,
                   struct discord_create_dm *params,
-                  struct discord_ret_channel *ret)
+                  struct discord_recv_channel *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -83,7 +83,7 @@ discord_create_dm(struct discord *client,
 CCORDcode
 discord_create_group_dm(struct discord *client,
                         struct discord_create_group_dm *params,
-                        struct discord_ret_channel *ret)
+                        struct discord_recv_channel *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -100,7 +100,7 @@ discord_create_group_dm(struct discord *client,
 
 CCORDcode
 discord_get_user_connections(struct discord *client,
-                             struct discord_ret_connection *ret)
+                             struct discord_recv_connection *ret)
 {
     struct discord_attributes attr = { 0 };
     DISCORD_ATTR_INIT(attr, discord_connection, ret, NULL);

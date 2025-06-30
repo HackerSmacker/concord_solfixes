@@ -12,7 +12,7 @@ discord_list_guild_scheduled_events(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_list_guild_scheduled_events *params,
-    struct discord_ret_guild_scheduled_event *ret)
+    struct discord_recv_guild_scheduled_event *ret)
 {
     struct discord_attributes attr = { 0 };
     const char *query =
@@ -29,7 +29,7 @@ discord_create_guild_scheduled_event(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_create_guild_scheduled_event *params,
-    struct discord_ret_guild_scheduled_event *ret)
+    struct discord_recv_guild_scheduled_event *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -54,7 +54,7 @@ discord_get_guild_scheduled_event(
     u64snowflake guild_id,
     u64snowflake guild_scheduled_event_id,
     struct discord_get_guild_scheduled_event *params,
-    struct discord_ret_guild_scheduled_event *ret)
+    struct discord_recv_guild_scheduled_event *ret)
 {
     struct discord_attributes attr = { 0 };
     const char *query =
@@ -75,7 +75,7 @@ discord_modify_guild_scheduled_event(
     u64snowflake guild_id,
     u64snowflake guild_scheduled_event_id,
     struct discord_modify_guild_scheduled_event *params,
-    struct discord_ret_guild_scheduled_event *ret)
+    struct discord_recv_guild_scheduled_event *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -95,7 +95,7 @@ CCORDcode
 discord_delete_guild_scheduled_event(struct discord *client,
                                      u64snowflake guild_id,
                                      u64snowflake guild_scheduled_event_id,
-                                     struct discord_ret *ret)
+                                     struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");
@@ -113,7 +113,7 @@ discord_get_guild_scheduled_event_users(
     u64snowflake guild_id,
     u64snowflake guild_scheduled_event_id,
     struct discord_get_guild_scheduled_event_users *params,
-    struct discord_ret_guild_scheduled_event_users *ret)
+    struct discord_recv_guild_scheduled_event_users *ret)
 {
     struct discord_attributes attr = { 0 };
     struct queriec queriec;

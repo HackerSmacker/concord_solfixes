@@ -61,7 +61,7 @@ on_reconnect(struct discord *client, const struct discord_message *event)
                            &(struct discord_create_message){
                                .content = "Reconnecting ...",
                            },
-                           &(struct discord_ret_message){
+                           &(struct discord_recv_message){
                                .done = &reconnect,
                                .high_priority = true,
                            });
@@ -92,7 +92,7 @@ on_spam_sync(struct discord *client, const struct discord_message *event)
                                &(struct discord_create_message){
                                    .content = text,
                                },
-                               &(struct discord_ret_message){
+                               &(struct discord_recv_message){
                                    .sync = DISCORD_SYNC_FLAG,
                                });
     }
@@ -101,7 +101,7 @@ on_spam_sync(struct discord *client, const struct discord_message *event)
                            &(struct discord_create_message){
                                .content = "CHECKPOINT",
                            },
-                           &(struct discord_ret_message){
+                           &(struct discord_recv_message){
                                .sync = DISCORD_SYNC_FLAG,
                            });
 }
@@ -127,7 +127,7 @@ send_batch(struct discord *client,
                            &(struct discord_create_message){
                                .content = "CHECKPOINT",
                            },
-                           &(struct discord_ret_message){
+                           &(struct discord_recv_message){
                                .done = &send_batch,
                            });
 }
@@ -157,7 +157,7 @@ on_force_error(struct discord *client, const struct discord_message *event)
     const u64snowflake FAUX_CHANNEL_ID = 123;
 
     discord_delete_channel(client, FAUX_CHANNEL_ID, NULL,
-                           &(struct discord_ret_channel){
+                           &(struct discord_recv_channel){
                                .fail = &fail_delete_channel,
                                .keep = event,
                            });

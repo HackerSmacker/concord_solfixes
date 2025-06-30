@@ -3,16 +3,22 @@
 
 #include "mida.h"
 
-typedef struct discord_metadata {
+typedef struct {
     size_t size; /**< size of the data */
     size_t length; /**< length of the data */
 } DiscordMD;
 
 #define DISCORD_METADATA(_data) MIDA(DiscordMD, _data)
 
-void *__discord_metadata_injection(void *data,
-                                   const size_t size,
-                                   const size_t length);
+static inline void *
+__discord_metadata_injection(void *data,
+                             const size_t size,
+                             const size_t length)
+{
+    DISCORD_METADATA(data)->size = size;
+    DISCORD_METADATA(data)->length = length;
+    return data;
+}
 
 #define discord_malloc(_count, _element_size)                                 \
     __discord_metadata_injection(                                             \
@@ -37,11 +43,9 @@ void *__discord_metadata_injection(void *data,
         sizeof((_type[])__VA_ARGS__) / sizeof(_type))
 
 #define discord_array(_type, ...)                                             \
-    (struct discord_##_type *)__discord_metadata_injection(                   \
-        mida_array(struct discord_##_type, __VA_ARGS__),                      \
-        sizeof((struct discord_##_type[])__VA_ARGS__),                        \
-        sizeof((struct discord_##_type[])__VA_ARGS__)                         \
-            / sizeof(struct discord_##_type))
+    (_type *)__discord_metadata_injection(                                    \
+        mida_array(_type, __VA_ARGS__), sizeof((_type[])__VA_ARGS__),         \
+        sizeof((_type[])__VA_ARGS__) / sizeof(_type))
 
 #define discord_struct(_type, ...) discord_array(_type, { __VA_ARGS__ })
 

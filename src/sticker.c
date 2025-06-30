@@ -13,7 +13,7 @@
 CCORDcode
 discord_get_sticker(struct discord *client,
                     u64snowflake sticker_id,
-                    struct discord_ret_sticker *ret)
+                    struct discord_recv_sticker *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, sticker_id != 0, CCORD_BAD_PARAMETER, "");
@@ -24,7 +24,7 @@ discord_get_sticker(struct discord *client,
 
 CCORDcode
 discord_list_nitro_sticker_packs(
-    struct discord *client, struct discord_ret_list_nitro_sticker_packs *ret)
+    struct discord *client, struct discord_recv_list_nitro_sticker_packs *ret)
 {
     struct discord_attributes attr = { 0 };
     DISCORD_ATTR_INIT(attr, discord_list_nitro_sticker_packs, ret, NULL);
@@ -35,7 +35,7 @@ discord_list_nitro_sticker_packs(
 CCORDcode
 discord_list_guild_stickers(struct discord *client,
                             u64snowflake guild_id,
-                            struct discord_ret_sticker *ret)
+                            struct discord_recv_sticker *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");
@@ -48,7 +48,7 @@ CCORDcode
 discord_get_guild_sticker(struct discord *client,
                           u64snowflake guild_id,
                           u64snowflake sticker_id,
-                          struct discord_ret_sticker *ret)
+                          struct discord_recv_sticker *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");
@@ -64,7 +64,7 @@ discord_modify_guild_sticker(struct discord *client,
                              u64snowflake guild_id,
                              u64snowflake sticker_id,
                              struct discord_modify_guild_sticker *params,
-                             struct discord_ret_sticker *ret)
+                             struct discord_recv_sticker *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -84,7 +84,7 @@ discord_delete_guild_sticker(struct discord *client,
                              u64snowflake guild_id,
                              u64snowflake sticker_id,
                              struct discord_delete_guild_sticker *params,
-                             struct discord_ret *ret)
+                             struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");

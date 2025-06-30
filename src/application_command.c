@@ -10,7 +10,7 @@ CCORDcode
 discord_get_global_application_commands(
     struct discord *client,
     u64snowflake application_id,
-    struct discord_ret_application_command *ret)
+    struct discord_recv_application_command *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");
@@ -25,7 +25,7 @@ discord_create_global_application_command(
     struct discord *client,
     u64snowflake application_id,
     struct discord_create_global_application_command *params,
-    struct discord_ret_application_command *ret)
+    struct discord_recv_application_command *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -47,7 +47,7 @@ discord_get_global_application_command(
     struct discord *client,
     u64snowflake application_id,
     u64snowflake command_id,
-    struct discord_ret_application_command *ret)
+    struct discord_recv_application_command *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");
@@ -64,7 +64,7 @@ discord_edit_global_application_command(
     u64snowflake application_id,
     u64snowflake command_id,
     struct discord_edit_global_application_command *params,
-    struct discord_ret_application_command *ret)
+    struct discord_recv_application_command *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -82,7 +82,7 @@ CCORDcode
 discord_delete_global_application_command(struct discord *client,
                                           u64snowflake application_id,
                                           u64snowflake command_id,
-                                          struct discord_ret *ret)
+                                          struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");
@@ -98,7 +98,7 @@ discord_bulk_overwrite_global_application_commands(
     struct discord *client,
     u64snowflake application_id,
     struct discord_application_command *params,
-    struct discord_ret_application_command *ret)
+    struct discord_recv_application_command *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -117,7 +117,7 @@ discord_get_guild_application_commands(
     struct discord *client,
     u64snowflake application_id,
     u64snowflake guild_id,
-    struct discord_ret_application_command *ret)
+    struct discord_recv_application_command *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");
@@ -135,7 +135,7 @@ discord_create_guild_application_command(
     u64snowflake application_id,
     u64snowflake guild_id,
     struct discord_create_guild_application_command *params,
-    struct discord_ret_application_command *ret)
+    struct discord_recv_application_command *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -160,7 +160,7 @@ discord_get_guild_application_command(
     u64snowflake application_id,
     u64snowflake guild_id,
     u64snowflake command_id,
-    struct discord_ret_application_command *ret)
+    struct discord_recv_application_command *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");
@@ -180,7 +180,7 @@ discord_edit_guild_application_command(
     u64snowflake guild_id,
     u64snowflake command_id,
     struct discord_edit_guild_application_command *params,
-    struct discord_ret_application_command *ret)
+    struct discord_recv_application_command *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -201,7 +201,7 @@ discord_delete_guild_application_command(struct discord *client,
                                          u64snowflake application_id,
                                          u64snowflake guild_id,
                                          u64snowflake command_id,
-                                         struct discord_ret *ret)
+                                         struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");
@@ -220,7 +220,7 @@ discord_bulk_overwrite_guild_application_commands(
     u64snowflake application_id,
     u64snowflake guild_id,
     struct discord_bulk_overwrite_guild_application_commands *params,
-    struct discord_ret_application_command *ret)
+    struct discord_recv_application_command *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -242,7 +242,7 @@ discord_get_guild_application_command_permissions(
     struct discord *client,
     u64snowflake application_id,
     u64snowflake guild_id,
-    struct discord_ret_guild_application_command_permission *ret)
+    struct discord_recv_guild_application_command_permission *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");
@@ -260,7 +260,7 @@ discord_get_application_command_permissions(
     u64snowflake application_id,
     u64snowflake guild_id,
     u64snowflake command_id,
-    struct discord_ret_application_command_permission *ret)
+    struct discord_recv_application_command_permission *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");

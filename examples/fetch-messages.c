@@ -18,7 +18,7 @@ u64snowflake
 select_guild(struct discord *client)
 {
     struct discord_guild *guilds = NULL;
-    struct discord_ret_guild ret = { .sync = &guilds };
+    struct discord_recv_guild ret = { .sync = &guilds };
     CCORDcode code;
 
     code = discord_get_current_user_guilds(client, &ret);
@@ -59,7 +59,7 @@ select_member(struct discord *client, u64snowflake guild_id)
 {
     // get guilds bot is a part of
     struct discord_guild_member *members = NULL;
-    struct discord_ret_guild_member ret = { .sync = &members };
+    struct discord_recv_guild_member ret = { .sync = &members };
     struct discord_list_guild_members params = { .limit = 1000, .after = 0 };
     CCORDcode code;
 
@@ -109,7 +109,7 @@ fetch_member_msgs(struct discord *client,
     struct discord_channel *channels = NULL;
     CCORDcode code;
 
-    struct discord_ret_channel ret = { .sync = &channels };
+    struct discord_recv_channel ret = { .sync = &channels };
     code = discord_get_guild_channels(client, guild_id, &ret);
     assert(CCORD_OK == code && "Couldn't fetch channels from guild");
 
@@ -120,7 +120,7 @@ fetch_member_msgs(struct discord *client,
         int n_msg = 0;
         while (n_msg != params.limit) {
             struct discord_message *msgs = NULL;
-            struct discord_ret_message ret = { .sync = &msgs };
+            struct discord_recv_message ret = { .sync = &msgs };
 
             discord_get_channel_messages(client, channels[i].id, &params,
                                          &ret);

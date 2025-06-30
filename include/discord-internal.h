@@ -390,8 +390,8 @@ void discord_bucket_request_unselect(struct discord_ratelimiter *rl,
 /** @} DiscordInternalRESTRequestRatelimit */
 
 /** @brief Generic request dispatcher */
-struct discord_ret_dispatch {
-    DISCORD_RET_DEFAULT_FIELDS;
+struct discord_recv_dispatch {
+    DISCORD_RECV_DEFAULT_FIELDS;
     /** `true` if may receive a datatype from response */
     bool has_type;
 
@@ -415,7 +415,7 @@ struct discord_ret_dispatch {
 };
 
 /** @brief Attributes of response datatype */
-struct discord_ret_response {
+struct discord_recv_response {
     /** pointer to datatype */
     void *data;
     /** size of datatype in bytes */
@@ -434,9 +434,9 @@ struct discord_ret_response {
  */
 #define DISCORD_ATTRIBUTES_FIELDS                                             \
     /** attributes set by client for request dispatch behavior */             \
-    struct discord_ret_dispatch dispatch;                                     \
+    struct discord_recv_dispatch dispatch;                                    \
     /** information for parsing response into a datatype (if possible) */     \
-    struct discord_ret_response response;                                     \
+    struct discord_recv_response response;                                    \
     /** if @ref HTTP_MIMEPOST provide attachments for file transfer */        \
     struct discord_attachment *attachments;                                   \
     /** indicated reason to why the action was taken @note when used at       \

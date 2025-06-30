@@ -13,7 +13,7 @@ discord_create_interaction_response(
     u64snowflake interaction_id,
     const char interaction_token[],
     struct discord_interaction_response *params,
-    struct discord_ret_interaction_response *ret)
+    struct discord_recv_interaction_response *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -43,7 +43,7 @@ discord_get_original_interaction_response(
     struct discord *client,
     u64snowflake application_id,
     const char interaction_token[],
-    struct discord_ret_interaction_response *ret)
+    struct discord_recv_interaction_response *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");
@@ -61,7 +61,7 @@ discord_edit_original_interaction_response(
     u64snowflake application_id,
     const char interaction_token[],
     struct discord_edit_original_interaction_response *params,
-    struct discord_ret_interaction_response *ret)
+    struct discord_recv_interaction_response *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -90,7 +90,7 @@ CCORDcode
 discord_delete_original_interaction_response(struct discord *client,
                                              u64snowflake application_id,
                                              const char interaction_token[],
-                                             struct discord_ret *ret)
+                                             struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");
@@ -107,7 +107,7 @@ discord_create_followup_message(struct discord *client,
                                 u64snowflake application_id,
                                 const char interaction_token[],
                                 struct discord_create_followup_message *params,
-                                struct discord_ret_webhook *ret)
+                                struct discord_recv_webhook *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -148,7 +148,7 @@ discord_get_followup_message(struct discord *client,
                              u64snowflake application_id,
                              const char interaction_token[],
                              u64snowflake message_id,
-                             struct discord_ret_message *ret)
+                             struct discord_recv_message *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");
@@ -167,7 +167,7 @@ discord_edit_followup_message(struct discord *client,
                               const char interaction_token[],
                               u64snowflake message_id,
                               struct discord_edit_followup_message *params,
-                              struct discord_ret_message *ret)
+                              struct discord_recv_message *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -198,7 +198,7 @@ discord_delete_followup_message(struct discord *client,
                                 u64snowflake application_id,
                                 const char interaction_token[],
                                 u64snowflake message_id,
-                                struct discord_ret *ret)
+                                struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, application_id != 0, CCORD_BAD_PARAMETER, "");

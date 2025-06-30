@@ -25,7 +25,7 @@
 CCORDcode discord_create_webhook(struct discord *client,
                                  u64snowflake channel_id,
                                  struct discord_create_webhook *params,
-                                 struct discord_ret_webhook *ret);
+                                 struct discord_recv_webhook *ret);
 
 /**
  * @brief Get webhooks from a given channel
@@ -38,7 +38,7 @@ CCORDcode discord_create_webhook(struct discord *client,
  */
 CCORDcode discord_get_channel_webhooks(struct discord *client,
                                        u64snowflake channel_id,
-                                       struct discord_ret_webhook *ret);
+                                       struct discord_recv_webhook *ret);
 
 /**
  * @brief Get webhooks from a given guild webhook objects
@@ -51,7 +51,7 @@ CCORDcode discord_get_channel_webhooks(struct discord *client,
  */
 CCORDcode discord_get_guild_webhooks(struct discord *client,
                                      u64snowflake guild_id,
-                                     struct discord_ret_webhook *ret);
+                                     struct discord_recv_webhook *ret);
 
 /**
  * @brief Get the new webhook object for the given id
@@ -63,7 +63,7 @@ CCORDcode discord_get_guild_webhooks(struct discord *client,
  */
 CCORDcode discord_get_webhook(struct discord *client,
                               u64snowflake webhook_id,
-                              struct discord_ret_webhook *ret);
+                              struct discord_recv_webhook *ret);
 
 /**
  * Same as discord_get_webhook(), except this call does not require
@@ -77,7 +77,7 @@ CCORDcode discord_get_webhook(struct discord *client,
 CCORDcode discord_get_webhook_with_token(struct discord *client,
                                          u64snowflake webhook_id,
                                          const char webhook_token[],
-                                         struct discord_ret_webhook *ret);
+                                         struct discord_recv_webhook *ret);
 
 /**
  * @brief Modify a webhook
@@ -92,7 +92,7 @@ CCORDcode discord_get_webhook_with_token(struct discord *client,
 CCORDcode discord_modify_webhook(struct discord *client,
                                  u64snowflake webhook_id,
                                  struct discord_modify_webhook *params,
-                                 struct discord_ret_webhook *ret);
+                                 struct discord_recv_webhook *ret);
 
 /**
  * Same discord_modify_webhook(), except this call does not require
@@ -109,7 +109,7 @@ CCORDcode discord_modify_webhook_with_token(
     u64snowflake webhook_id,
     const char webhook_token[],
     struct discord_modify_webhook_with_token *params,
-    struct discord_ret_webhook *ret);
+    struct discord_recv_webhook *ret);
 
 /**
  * Delete a webhook permanently. Requires the MANAGE_WEBHOOKS permission
@@ -122,7 +122,7 @@ CCORDcode discord_modify_webhook_with_token(
 CCORDcode discord_delete_webhook(struct discord *client,
                                  u64snowflake webhook_id,
                                  struct discord_delete_webhook *params,
-                                 struct discord_ret *ret);
+                                 struct discord_recv *ret);
 
 /**
  * Same discord_delete_webhook(), except this call does not require
@@ -136,7 +136,7 @@ CCORDcode discord_delete_webhook(struct discord *client,
 CCORDcode discord_delete_webhook_with_token(struct discord *client,
                                             u64snowflake webhook_id,
                                             const char webhook_token[],
-                                            struct discord_ret *ret);
+                                            struct discord_recv *ret);
 
 /**
  * @param client the client created with discord_from_token()
@@ -150,7 +150,7 @@ CCORDcode discord_execute_webhook(struct discord *client,
                                   u64snowflake webhook_id,
                                   const char webhook_token[],
                                   struct discord_execute_webhook *params,
-                                  struct discord_ret *ret);
+                                  struct discord_recv *ret);
 
 /**
  * @brief Get previously-sent webhook message from the same token
@@ -166,7 +166,7 @@ CCORDcode discord_get_webhook_message(struct discord *client,
                                       u64snowflake webhook_id,
                                       const char webhook_token[],
                                       u64snowflake message_id,
-                                      struct discord_ret_message *ret);
+                                      struct discord_recv_message *ret);
 
 /**
  * @brief Edits a previously-sent webhook message from the same token
@@ -185,7 +185,7 @@ CCORDcode discord_edit_webhook_message(
     const char webhook_token[],
     u64snowflake message_id,
     struct discord_edit_webhook_message *params,
-    struct discord_ret_message *ret);
+    struct discord_recv_message *ret);
 
 /**
  * @brief Deletes a message that was created by the webhook
@@ -201,7 +201,7 @@ CCORDcode discord_delete_webhook_message(struct discord *client,
                                          u64snowflake webhook_id,
                                          const char webhook_token[],
                                          u64snowflake message_id,
-                                         struct discord_ret *ret);
+                                         struct discord_recv *ret);
 
 /** @example webhook.c
  * Demonstrates a couple use cases of the Webhook API */

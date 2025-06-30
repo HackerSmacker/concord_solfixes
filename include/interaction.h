@@ -27,7 +27,7 @@ CCORDcode discord_create_interaction_response(
     u64snowflake interaction_id,
     const char interaction_token[],
     struct discord_interaction_response *params,
-    struct discord_ret_interaction_response *ret);
+    struct discord_recv_interaction_response *ret);
 
 /**
  * @brief Get the initial Interaction response
@@ -42,7 +42,7 @@ CCORDcode discord_get_original_interaction_response(
     struct discord *client,
     u64snowflake application_id,
     const char interaction_token[],
-    struct discord_ret_interaction_response *ret);
+    struct discord_recv_interaction_response *ret);
 
 /**
  * @brief Edit the initial Interaction response
@@ -59,7 +59,7 @@ CCORDcode discord_edit_original_interaction_response(
     u64snowflake application_id,
     const char interaction_token[],
     struct discord_edit_original_interaction_response *params,
-    struct discord_ret_interaction_response *ret);
+    struct discord_recv_interaction_response *ret);
 
 /**
  * @brief Delete the initial Interaction response
@@ -74,7 +74,7 @@ CCORDcode discord_delete_original_interaction_response(
     struct discord *client,
     u64snowflake application_id,
     const char interaction_token[],
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Create a followup message for an Interaction
@@ -91,7 +91,7 @@ CCORDcode discord_create_followup_message(
     u64snowflake application_id,
     const char interaction_token[],
     struct discord_create_followup_message *params,
-    struct discord_ret_webhook *ret);
+    struct discord_recv_webhook *ret);
 
 /**
  * @brief Get a followup message for an interaction
@@ -107,7 +107,7 @@ CCORDcode discord_get_followup_message(struct discord *client,
                                        u64snowflake application_id,
                                        const char interaction_token[],
                                        u64snowflake message_id,
-                                       struct discord_ret_message *ret);
+                                       struct discord_recv_message *ret);
 
 /**
  * @brief Edits a followup message for an interaction
@@ -126,7 +126,7 @@ CCORDcode discord_edit_followup_message(
     const char interaction_token[],
     u64snowflake message_id,
     struct discord_edit_followup_message *params,
-    struct discord_ret_message *ret);
+    struct discord_recv_message *ret);
 
 /**
  * @brief Edits a followup message for an interaction
@@ -142,7 +142,7 @@ CCORDcode discord_delete_followup_message(struct discord *client,
                                           u64snowflake application_id,
                                           const char interaction_token[],
                                           u64snowflake message_id,
-                                          struct discord_ret *ret);
+                                          struct discord_recv *ret);
 
 /** @example components.c
  * Demonstrates a couple use cases of the Message Components API */

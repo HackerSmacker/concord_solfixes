@@ -8,7 +8,7 @@
 
 CCORDcode
 discord_get_current_bot_application_information(
-    struct discord *client, struct discord_ret_application *ret)
+    struct discord *client, struct discord_recv_application *ret)
 {
     struct discord_attributes attr = { 0 };
     DISCORD_ATTR_INIT(attr, discord_application, ret, NULL);
@@ -18,7 +18,7 @@ discord_get_current_bot_application_information(
 
 CCORDcode
 discord_get_current_authorization_information(
-    struct discord *client, struct discord_ret_auth_response *ret)
+    struct discord *client, struct discord_recv_auth_response *ret)
 {
     struct discord_attributes attr = { 0 };
     DISCORD_ATTR_INIT(attr, discord_auth_response, ret, NULL);

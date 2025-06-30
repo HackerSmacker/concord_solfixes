@@ -313,7 +313,7 @@ _discord_init(struct discord *client)
 
     if (client->config.token) {
         if ((code = discord_get_current_user(client,
-                                             &(struct discord_ret_user){
+                                             &(struct discord_recv_user){
                                                  .sync = &client->self,
                                              }))
             != CCORD_OK)

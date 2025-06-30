@@ -20,7 +20,7 @@
  * @CCORD_return
  */
 CCORDcode discord_get_current_bot_application_information(
-    struct discord *client, struct discord_ret_application *ret);
+    struct discord *client, struct discord_recv_application *ret);
 
 /**
  * @brief Returns info about the current authorization
@@ -31,7 +31,7 @@ CCORDcode discord_get_current_bot_application_information(
  * @CCORD_return
  */
 CCORDcode discord_get_current_authorization_information(
-    struct discord *client, struct discord_ret_auth_response *ret);
+    struct discord *client, struct discord_recv_auth_response *ret);
 
 /** @} DiscordAPIOAuth2 */
 

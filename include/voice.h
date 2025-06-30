@@ -21,7 +21,7 @@
  * @CCORD_return
  */
 CCORDcode discord_list_voice_regions(struct discord *client,
-                                     struct discord_ret_voice_region *ret);
+                                     struct discord_recv_voice_region *ret);
 
 /** @example voice.c
  * Demonstrates a couple use cases of the Voice API */

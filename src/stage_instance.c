@@ -13,7 +13,7 @@
 CCORDcode
 discord_create_stage_instance(struct discord *client,
                               struct discord_create_stage_instance *params,
-                              struct discord_ret_stage_instance *ret)
+                              struct discord_recv_stage_instance *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -31,7 +31,7 @@ discord_create_stage_instance(struct discord *client,
 CCORDcode
 discord_get_stage_instance(struct discord *client,
                            u64snowflake channel_id,
-                           struct discord_ret_stage_instance *ret)
+                           struct discord_recv_stage_instance *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -44,7 +44,7 @@ CCORDcode
 discord_modify_stage_instance(struct discord *client,
                               u64snowflake channel_id,
                               struct discord_modify_stage_instance *params,
-                              struct discord_ret_stage_instance *ret)
+                              struct discord_recv_stage_instance *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -60,7 +60,7 @@ CCORDcode
 discord_delete_stage_instance(struct discord *client,
                               u64snowflake channel_id,
                               struct discord_delete_stage_instance *params,
-                              struct discord_ret *ret)
+                              struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");

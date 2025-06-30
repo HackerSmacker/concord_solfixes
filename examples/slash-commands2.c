@@ -65,7 +65,7 @@ on_interaction_create(struct discord *client,
         .type = DISCORD_INTERACTION_CHANNEL_MESSAGE_WITH_SOURCE,
         .data = data,
     };
-    struct discord_ret_interaction_response ret = {
+    struct discord_recv_interaction_response ret = {
         .fail = &fail_interaction_create
     };
 
@@ -103,7 +103,7 @@ read_input(void *p_client)
 
             sscanf(buf + bufoffset, "%" SCNu64, &guild_id);
 
-            struct discord_ret_application_command ret = {
+            struct discord_recv_application_command ret = {
                 .sync = &app_cmds,
             };
 
@@ -142,7 +142,7 @@ read_input(void *p_client)
 
             if (!*cmd_name || !*cmd_desc) goto _help;
 
-            struct discord_ret_application_command ret = {
+            struct discord_recv_application_command ret = {
                 .sync = &app_cmd,
             };
 
@@ -190,7 +190,7 @@ read_input(void *p_client)
 
             struct discord_application_command *app_cmd = NULL;
 
-            struct discord_ret_application_command ret = {
+            struct discord_recv_application_command ret = {
                 .sync = &app_cmd,
             };
 
@@ -233,7 +233,7 @@ read_input(void *p_client)
 
             if (!command_id) goto _help;
 
-            struct discord_ret ret = { .sync = true };
+            struct discord_recv ret = { .sync = true };
 
             if (guild_id) {
                 code = discord_delete_guild_application_command(

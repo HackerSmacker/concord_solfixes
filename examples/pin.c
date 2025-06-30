@@ -109,7 +109,7 @@ on_get_pins(struct discord *client, const struct discord_message *event)
 {
     if (event->author->bot) return;
 
-    struct discord_ret_message ret = {
+    struct discord_recv_message ret = {
         .done = &done_get_pins,
         .fail = &fail_get_pins,
         .keep = event,

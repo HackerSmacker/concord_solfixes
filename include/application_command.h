@@ -24,7 +24,7 @@
 CCORDcode discord_get_global_application_commands(
     struct discord *client,
     u64snowflake application_id,
-    struct discord_ret_application_command *ret);
+    struct discord_recv_application_command *ret);
 
 /**
  * @brief Create a new global command
@@ -40,7 +40,7 @@ CCORDcode discord_create_global_application_command(
     struct discord *client,
     u64snowflake application_id,
     struct discord_create_global_application_command *params,
-    struct discord_ret_application_command *ret);
+    struct discord_recv_application_command *ret);
 
 /**
  * @brief Fetch a global command for your application
@@ -55,7 +55,7 @@ CCORDcode discord_get_global_application_command(
     struct discord *client,
     u64snowflake application_id,
     u64snowflake command_id,
-    struct discord_ret_application_command *ret);
+    struct discord_recv_application_command *ret);
 
 /**
  * @brief Edit a global command
@@ -73,7 +73,7 @@ CCORDcode discord_edit_global_application_command(
     u64snowflake application_id,
     u64snowflake command_id,
     struct discord_edit_global_application_command *params,
-    struct discord_ret_application_command *ret);
+    struct discord_recv_application_command *ret);
 
 /**
  * @brief Deletes a global command
@@ -88,7 +88,7 @@ CCORDcode discord_delete_global_application_command(
     struct discord *client,
     u64snowflake application_id,
     u64snowflake command_id,
-    struct discord_ret *ret);
+    struct discord_recv *ret);
 
 /**
  * @brief Overwrite existing global application commands
@@ -106,7 +106,7 @@ CCORDcode discord_bulk_overwrite_global_application_commands(
     struct discord *client,
     u64snowflake application_id,
     struct discord_application_command *params,
-    struct discord_ret_application_command *ret);
+    struct discord_recv_application_command *ret);
 
 /**
  * @brief Fetch all of the guild commands of a given guild
@@ -121,7 +121,7 @@ CCORDcode discord_get_guild_application_commands(
     struct discord *client,
     u64snowflake application_id,
     u64snowflake guild_id,
-    struct discord_ret_application_command *ret);
+    struct discord_recv_application_command *ret);
 
 /**
  * @brief Create a new guild command
@@ -140,7 +140,7 @@ CCORDcode discord_create_guild_application_command(
     u64snowflake application_id,
     u64snowflake guild_id,
     struct discord_create_guild_application_command *params,
-    struct discord_ret_application_command *ret);
+    struct discord_recv_application_command *ret);
 
 /**
  * @brief Fetch a guild command for your application
@@ -157,7 +157,7 @@ CCORDcode discord_get_guild_application_command(
     u64snowflake application_id,
     u64snowflake guild_id,
     u64snowflake command_id,
-    struct discord_ret_application_command *ret);
+    struct discord_recv_application_command *ret);
 
 /**
  * @brief Edit a guild command
@@ -177,7 +177,7 @@ CCORDcode discord_edit_guild_application_command(
     u64snowflake guild_id,
     u64snowflake command_id,
     struct discord_edit_guild_application_command *params,
-    struct discord_ret_application_command *ret);
+    struct discord_recv_application_command *ret);
 
 /**
  * @brief Deletes a guild command
@@ -193,7 +193,7 @@ CCORDcode discord_delete_guild_application_command(struct discord *client,
                                                    u64snowflake application_id,
                                                    u64snowflake guild_id,
                                                    u64snowflake command_id,
-                                                   struct discord_ret *ret);
+                                                   struct discord_recv *ret);
 
 /**
  * @brief Overwrite existing guild application commands
@@ -212,7 +212,7 @@ CCORDcode discord_bulk_overwrite_guild_application_commands(
     u64snowflake application_id,
     u64snowflake guild_id,
     struct discord_bulk_overwrite_guild_application_commands *params,
-    struct discord_ret_application_command *ret);
+    struct discord_recv_application_command *ret);
 
 /**
  * @brief Fetches command permissions for all commands in a given guild
@@ -227,7 +227,7 @@ CCORDcode discord_get_guild_application_command_permissions(
     struct discord *client,
     u64snowflake application_id,
     u64snowflake guild_id,
-    struct discord_ret_guild_application_command_permission *ret);
+    struct discord_recv_guild_application_command_permission *ret);
 
 /**
  * @brief Fetches command permissions for a specific command in a given guild
@@ -244,7 +244,7 @@ CCORDcode discord_get_application_command_permissions(
     u64snowflake application_id,
     u64snowflake guild_id,
     u64snowflake command_id,
-    struct discord_ret_application_command_permission *ret);
+    struct discord_recv_application_command_permission *ret);
 
 /** @example slash-commands.c
  * Demonstrates registering and reacting to slash commands */

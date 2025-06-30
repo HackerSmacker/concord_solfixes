@@ -81,7 +81,7 @@ on_get_users(struct discord *client, const struct discord_message *event)
 {
     if (event->author->bot || !event->referenced_message) return;
 
-    struct discord_ret_user ret = {
+    struct discord_recv_user ret = {
         .done = &done_get_users,
         .fail = &fail_get_users,
         .keep = event,

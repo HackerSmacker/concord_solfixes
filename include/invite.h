@@ -24,7 +24,7 @@
 CCORDcode discord_get_invite(struct discord *client,
                              char *invite_code,
                              struct discord_get_invite *params,
-                             struct discord_ret_invite *ret);
+                             struct discord_recv_invite *ret);
 
 /**
  * @brief Delete an invite
@@ -41,7 +41,7 @@ CCORDcode discord_get_invite(struct discord *client,
 CCORDcode discord_delete_invite(struct discord *client,
                                 char *invite_code,
                                 struct discord_delete_invite *params,
-                                struct discord_ret_invite *ret);
+                                struct discord_recv_invite *ret);
 
 /** @example invite.c
  * Demonstrates a couple use cases of the Invite API */

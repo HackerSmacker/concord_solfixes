@@ -97,7 +97,7 @@ on_audit_channel_create(struct discord *client,
 {
     if (event->author->bot) return;
 
-    struct discord_ret_audit_log ret = {
+    struct discord_recv_audit_log ret = {
         .done = &done,
         .fail = &fail,
         .keep = event,

@@ -214,7 +214,7 @@ You can retrieve existing commands to check what's currently registered:
 ```c
 void list_global_commands(struct discord *client, const struct discord_ready *bot) {
     discord_get_global_application_commands(client, bot->id, NULL,
-        &(struct discord_ret_application_command){
+        &(struct discord_recv_application_command){
             .done = print_commands_cb
         });
 }
@@ -240,7 +240,7 @@ void list_guild_commands(struct discord *client, const struct discord_ready *bot
     u64snowflake guild_id = 1234567898765431; // Replace with guild ID
     
     discord_get_guild_application_commands(client, bot->id, guild_id, NULL,
-        &(struct discord_ret_application_command){
+        &(struct discord_recv_application_command){
             .done = print_commands_cb
         });
 }

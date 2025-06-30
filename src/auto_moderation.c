@@ -10,7 +10,7 @@ CCORDcode
 discord_list_auto_moderation_rules_for_guild(
     struct discord *client,
     u64snowflake guild_id,
-    struct discord_ret_auto_moderation_rule *ret)
+    struct discord_recv_auto_moderation_rule *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");
@@ -24,7 +24,7 @@ CCORDcode
 discord_get_auto_moderation_rule(struct discord *client,
                                  u64snowflake guild_id,
                                  u64snowflake auto_moderation_rule_id,
-                                 struct discord_ret_auto_moderation_rule *ret)
+                                 struct discord_recv_auto_moderation_rule *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");
@@ -42,7 +42,7 @@ discord_create_auto_moderation_rule(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_create_auto_moderation_rule *params,
-    struct discord_ret_auto_moderation_rule *ret)
+    struct discord_recv_auto_moderation_rule *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -66,7 +66,7 @@ discord_modify_auto_moderation_rule(
     u64snowflake guild_id,
     u64snowflake auto_moderation_rule_id,
     struct discord_modify_auto_moderation_rule *params,
-    struct discord_ret_auto_moderation_rule *ret)
+    struct discord_recv_auto_moderation_rule *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -92,7 +92,7 @@ discord_delete_auto_moderation_rule(
     u64snowflake guild_id,
     u64snowflake auto_moderation_rule_id,
     struct discord_delete_auto_moderation_rule *params,
-    struct discord_ret *ret)
+    struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");

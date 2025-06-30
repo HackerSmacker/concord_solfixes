@@ -11,7 +11,7 @@ CCORDcode
 discord_get_guild_audit_log(struct discord *client,
                             u64snowflake guild_id,
                             struct discord_get_guild_audit_log *params,
-                            struct discord_ret_audit_log *ret)
+                            struct discord_recv_audit_log *ret)
 {
     struct discord_attributes attr = { 0 };
     struct queriec queriec;

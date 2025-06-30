@@ -15,7 +15,7 @@ discord_disconnect_guild_member(struct discord *client,
                                 u64snowflake guild_id,
                                 u64snowflake user_id,
                                 struct discord_modify_guild_member *params,
-                                struct discord_ret_guild_member *ret)
+                                struct discord_recv_guild_member *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };

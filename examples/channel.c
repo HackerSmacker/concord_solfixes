@@ -147,7 +147,7 @@ on_channel_get_invites(struct discord *client,
 {
     if (event->author->bot) return;
 
-    struct discord_ret_invite ret = {
+    struct discord_recv_invite ret = {
         .done = &done_get_channel_invites,
         .fail = &fail_get_channel_invites,
         .keep = event,
@@ -187,7 +187,7 @@ on_channel_create_invite(struct discord *client,
 {
     if (event->author->bot) return;
 
-    struct discord_ret_invite ret = {
+    struct discord_recv_invite ret = {
         .done = &done_create_channel_invite,
         .fail = &fail_create_channel_invite,
         .keep = event,
@@ -228,7 +228,7 @@ on_channel_start_thread(struct discord *client,
 {
     if (event->author->bot) return;
 
-    struct discord_ret_channel ret = {
+    struct discord_recv_channel ret = {
         .done = &done_start_thread,
         .fail = &fail_start_thread,
         .keep = event,

@@ -20,7 +20,7 @@
  * @CCORD_return
  */
 CCORDcode discord_get_current_user(struct discord *client,
-                                   struct discord_ret_user *ret);
+                                   struct discord_recv_user *ret);
 
 /**
  * @brief Get user for a given id
@@ -32,7 +32,7 @@ CCORDcode discord_get_current_user(struct discord *client,
  */
 CCORDcode discord_get_user(struct discord *client,
                            u64snowflake user_id,
-                           struct discord_ret_user *ret);
+                           struct discord_recv_user *ret);
 
 /**
  * @brief Modify client's user account settings
@@ -45,7 +45,7 @@ CCORDcode discord_get_user(struct discord *client,
 CCORDcode discord_modify_current_user(
     struct discord *client,
     struct discord_modify_current_user *params,
-    struct discord_ret_user *ret);
+    struct discord_recv_user *ret);
 
 /**
  * @brief Get guilds client is a member of
@@ -56,7 +56,7 @@ CCORDcode discord_modify_current_user(
  * @CCORD_return
  */
 CCORDcode discord_get_current_user_guilds(struct discord *client,
-                                          struct discord_ret_guild *ret);
+                                          struct discord_recv_guild *ret);
 
 /**
  * @brief Leave a guild
@@ -68,7 +68,7 @@ CCORDcode discord_get_current_user_guilds(struct discord *client,
  */
 CCORDcode discord_leave_guild(struct discord *client,
                               u64snowflake guild_id,
-                              struct discord_ret *ret);
+                              struct discord_recv *ret);
 
 /**
  * @brief Create a new DM channel with a given user
@@ -83,7 +83,7 @@ CCORDcode discord_leave_guild(struct discord *client,
  */
 CCORDcode discord_create_dm(struct discord *client,
                             struct discord_create_dm *params,
-                            struct discord_ret_channel *ret);
+                            struct discord_recv_channel *ret);
 
 /**
  * @brief Create a new group DM channel with multiple users
@@ -97,7 +97,7 @@ CCORDcode discord_create_dm(struct discord *client,
  */
 CCORDcode discord_create_group_dm(struct discord *client,
                                   struct discord_create_group_dm *params,
-                                  struct discord_ret_channel *ret);
+                                  struct discord_recv_channel *ret);
 
 /**
  * @brief Get a list of connection objects
@@ -108,7 +108,7 @@ CCORDcode discord_create_group_dm(struct discord *client,
  * @CCORD_return
  */
 CCORDcode discord_get_user_connections(struct discord *client,
-                                       struct discord_ret_connection *ret);
+                                       struct discord_recv_connection *ret);
 
 /** @} DiscordAPIUser */
 

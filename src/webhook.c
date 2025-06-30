@@ -11,7 +11,7 @@ CCORDcode
 discord_create_webhook(struct discord *client,
                        u64snowflake channel_id,
                        struct discord_create_webhook *params,
-                       struct discord_ret_webhook *ret)
+                       struct discord_recv_webhook *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -28,7 +28,7 @@ discord_create_webhook(struct discord *client,
 CCORDcode
 discord_get_channel_webhooks(struct discord *client,
                              u64snowflake channel_id,
-                             struct discord_ret_webhook *ret)
+                             struct discord_recv_webhook *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -40,7 +40,7 @@ discord_get_channel_webhooks(struct discord *client,
 CCORDcode
 discord_get_guild_webhooks(struct discord *client,
                            u64snowflake guild_id,
-                           struct discord_ret_webhook *ret)
+                           struct discord_recv_webhook *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");
@@ -52,7 +52,7 @@ discord_get_guild_webhooks(struct discord *client,
 CCORDcode
 discord_get_webhook(struct discord *client,
                     u64snowflake webhook_id,
-                    struct discord_ret_webhook *ret)
+                    struct discord_recv_webhook *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, webhook_id != 0, CCORD_BAD_PARAMETER, "");
@@ -65,7 +65,7 @@ CCORDcode
 discord_get_webhook_with_token(struct discord *client,
                                u64snowflake webhook_id,
                                const char webhook_token[],
-                               struct discord_ret_webhook *ret)
+                               struct discord_recv_webhook *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, webhook_id != 0, CCORD_BAD_PARAMETER, "");
@@ -81,7 +81,7 @@ CCORDcode
 discord_modify_webhook(struct discord *client,
                        u64snowflake webhook_id,
                        struct discord_modify_webhook *params,
-                       struct discord_ret_webhook *ret)
+                       struct discord_recv_webhook *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -100,7 +100,7 @@ discord_modify_webhook_with_token(
     u64snowflake webhook_id,
     const char webhook_token[],
     struct discord_modify_webhook_with_token *params,
-    struct discord_ret_webhook *ret)
+    struct discord_recv_webhook *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -119,7 +119,7 @@ CCORDcode
 discord_delete_webhook(struct discord *client,
                        u64snowflake webhook_id,
                        struct discord_delete_webhook *params,
-                       struct discord_ret *ret)
+                       struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, webhook_id != 0, CCORD_BAD_PARAMETER, "");
@@ -132,7 +132,7 @@ CCORDcode
 discord_delete_webhook_with_token(struct discord *client,
                                   u64snowflake webhook_id,
                                   const char webhook_token[],
-                                  struct discord_ret *ret)
+                                  struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, webhook_id != 0, CCORD_BAD_PARAMETER, "");
@@ -149,7 +149,7 @@ discord_execute_webhook(struct discord *client,
                         u64snowflake webhook_id,
                         const char webhook_token[],
                         struct discord_execute_webhook *params,
-                        struct discord_ret *ret)
+                        struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -196,7 +196,7 @@ discord_get_webhook_message(struct discord *client,
                             u64snowflake webhook_id,
                             const char webhook_token[],
                             u64snowflake message_id,
-                            struct discord_ret_message *ret)
+                            struct discord_recv_message *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, webhook_id != 0, CCORD_BAD_PARAMETER, "");
@@ -215,7 +215,7 @@ discord_edit_webhook_message(struct discord *client,
                              const char webhook_token[],
                              u64snowflake message_id,
                              struct discord_edit_webhook_message *params,
-                             struct discord_ret_message *ret)
+                             struct discord_recv_message *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -246,7 +246,7 @@ discord_delete_webhook_message(struct discord *client,
                                u64snowflake webhook_id,
                                const char webhook_token[],
                                u64snowflake message_id,
-                               struct discord_ret *ret)
+                               struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, webhook_id != 0, CCORD_BAD_PARAMETER, "");

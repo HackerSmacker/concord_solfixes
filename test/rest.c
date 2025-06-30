@@ -13,7 +13,7 @@ static struct discord *CLIENT;
 TEST
 check_sync_fetch_object(void)
 {
-    struct discord_ret_user ret = { 0 };
+    struct discord_recv_user ret = { 0 };
     struct discord_user *bot = NULL;
 
     ret.sync = &bot;
@@ -29,7 +29,7 @@ check_sync_fetch_object(void)
 TEST
 check_sync_fetch_array(void)
 {
-    struct discord_ret_guild ret = { 0 };
+    struct discord_recv_guild ret = { 0 };
     struct discord_guild *guilds = NULL;
 
     ret.sync = &guilds;
@@ -46,7 +46,7 @@ TEST
 check_sync_fetch_nothing(void *data)
 {
     u64snowflake ch_id = *(u64snowflake *)data;
-    struct discord_ret ret = { 0 };
+    struct discord_recv ret = { 0 };
 
     if (!ch_id) SKIPm("Missing channel_id from config.json");
 
@@ -60,7 +60,7 @@ TEST
 check_sync_trigger_error_on_bogus_parameter(void)
 {
     const u64snowflake BOGUS_ID = 123;
-    struct discord_ret_channel ret = { 0 };
+    struct discord_recv_channel ret = { 0 };
 
     ret.sync = DISCORD_SYNC_FLAG;
     ASSERT_NEQ(CCORD_OK, discord_delete_channel(CLIENT, BOGUS_ID, NULL, &ret));
@@ -105,7 +105,7 @@ on_done1(struct discord *client,
 TEST
 check_async_fetch_object(void)
 {
-    struct discord_ret_user ret = { 0 };
+    struct discord_recv_user ret = { 0 };
     CCORDcode result = CCORD_OK;
 
     ret.done = (DONE1_CAST(struct discord_user))on_done1;
@@ -122,7 +122,7 @@ check_async_fetch_object(void)
 TEST
 check_async_fetch_array(void)
 {
-    struct discord_ret_guild ret = { 0 };
+    struct discord_recv_guild ret = { 0 };
     CCORDcode result = CCORD_OK;
 
     ret.done = (DONE1_CAST(struct discord_guild))on_done1;
@@ -140,7 +140,7 @@ TEST
 check_async_fetch_nothing(void *data)
 {
     u64snowflake ch_id = *(u64snowflake *)data;
-    struct discord_ret ret = { 0 };
+    struct discord_recv ret = { 0 };
     CCORDcode result = CCORD_OK;
 
     if (!ch_id) SKIPm("Missing channel_id from config.json");
@@ -159,7 +159,7 @@ TEST
 check_async_trigger_error_on_bogus_parameter(void)
 {
     const u64snowflake BOGUS_ID = 123;
-    struct discord_ret_channel ret = { 0 };
+    struct discord_recv_channel ret = { 0 };
     CCORDcode result = CCORD_OK;
 
     ret.done = (DONE1_CAST(struct discord_channel))on_done1;

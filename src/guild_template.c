@@ -9,7 +9,7 @@
 CCORDcode
 discord_get_guild_template(struct discord *client,
                            const char template_code[],
-                           struct discord_ret_guild_template *ret)
+                           struct discord_recv_guild_template *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, NOT_EMPTY_STR(template_code), CCORD_BAD_PARAMETER,
@@ -24,7 +24,7 @@ discord_create_guild_from_guild_template(
     struct discord *client,
     const char template_code[],
     struct discord_create_guild_from_guild_template *params,
-    struct discord_ret_guild *ret)
+    struct discord_recv_guild *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -40,7 +40,7 @@ discord_create_guild_from_guild_template(
 CCORDcode
 discord_get_guild_templates(struct discord *client,
                             u64snowflake guild_id,
-                            struct discord_ret_guild_template *ret)
+                            struct discord_recv_guild_template *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");
@@ -53,7 +53,7 @@ CCORDcode
 discord_create_guild_template(struct discord *client,
                               u64snowflake guild_id,
                               struct discord_create_guild_template *params,
-                              struct discord_ret_guild_template *ret)
+                              struct discord_recv_guild_template *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -69,7 +69,7 @@ CCORDcode
 discord_sync_guild_template(struct discord *client,
                             u64snowflake guild_id,
                             const char template_code[],
-                            struct discord_ret_guild_template *ret)
+                            struct discord_recv_guild_template *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");
@@ -86,7 +86,7 @@ discord_modify_guild_template(struct discord *client,
                               u64snowflake guild_id,
                               const char template_code[],
                               struct discord_modify_guild_template *params,
-                              struct discord_ret_guild_template *ret)
+                              struct discord_recv_guild_template *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -105,7 +105,7 @@ CCORDcode
 discord_delete_guild_template(struct discord *client,
                               u64snowflake guild_id,
                               const char template_code[],
-                              struct discord_ret_guild_template *ret)
+                              struct discord_recv_guild_template *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");

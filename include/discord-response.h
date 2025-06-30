@@ -10,9 +10,9 @@
 
 /** @brief The response for the completed request */
 struct discord_response {
-    /** user arbitrary data provided at @ref discord_ret */
+    /** user arbitrary data provided at @ref discord_recv */
     void *data;
-    /** kept concord's parameter provided at @ref discord_ret */
+    /** kept concord's parameter provided at @ref discord_recv */
     const void *keep;
     /** request completion status @see @ref ConcordError */
     CCORDcode code;
@@ -28,10 +28,10 @@ struct discord_response {
  ******************************************************************************/
 
 /**
- * @brief Macro containing common fields for `struct discord_ret*` datatypes
+ * @brief Macro containing common fields for `struct discord_recv*` datatypes
  * @note this exists for alignment purposes
  */
-#define DISCORD_RET_DEFAULT_FIELDS                                            \
+#define DISCORD_RECV_DEFAULT_FIELDS                                           \
     /** user arbitrary data to be passed to `done` or `fail` callbacks */     \
     void *data;                                                               \
     /** cleanup method to be called for `data`, once its no longer            \
@@ -45,14 +45,20 @@ struct discord_response {
     /** optional callback to be executed on a failed request */               \
     void (*fail)(struct discord * client, struct discord_response * resp)
 
-#define DISCORD_RETURN(_type)                                                 \
+#define _DISCORD_RECV_DEFAULT_FIELDS_SIZE                                     \
+    sizeof(struct { DISCORD_RECV_DEFAULT_FIELDS; })
+
+#define DISCORD_RECV_DEFAULT_FIELDS_COPY(dest, src)                           \
+    memcpy(&(dest), &(src), _DISCORD_RECV_DEFAULT_FIELDS_SIZE)
+
+#define _DISCORD_RECV_DECLARE(_type)                                          \
     /** @brief Request's return context */                                    \
-    struct discord_ret_##_type {                                              \
-        DISCORD_RET_DEFAULT_FIELDS;                                           \
+    struct discord_recv_##_type {                                             \
+        DISCORD_RECV_DEFAULT_FIELDS;                                          \
         /** optional callback to be executed on a successful request */       \
         void (*done)(struct discord * client,                                 \
                      struct discord_response *resp,                           \
-                     const struct discord_##_type *ret);                      \
+                     const struct discord_##_type *recv);                     \
         /** if an address is provided, then request will block the thread and \
            perform on-spot.                                                   \
            On success the response object will be written to the address,     \
@@ -61,8 +67,8 @@ struct discord_response {
     }
 
 /** @brief Request's return context */
-struct discord_ret {
-    DISCORD_RET_DEFAULT_FIELDS;
+struct discord_recv {
+    DISCORD_RECV_DEFAULT_FIELDS;
     /** optional callback to be executed on a successful request */
     void (*done)(struct discord *client, struct discord_response *resp);
     /** if `true`, request will block the thread and perform on-spot */
@@ -74,103 +80,105 @@ struct discord_ret {
 
 /** @addtogroup DiscordAPIOAuth2
  *  @{ */
-DISCORD_RETURN(application);
-DISCORD_RETURN(auth_response);
+_DISCORD_RECV_DECLARE(application);
+_DISCORD_RECV_DECLARE(auth_response);
 /** @} DiscordAPIOAuth2 */
 
 /** @addtogroup DiscordAPIAuditLog
  *  @{ */
-DISCORD_RETURN(audit_log);
+_DISCORD_RECV_DECLARE(audit_log);
 /** @} DiscordAPIAuditLog */
 
 /** @addtogroup DiscordAPIAutoModeration
  *  @{ */
-DISCORD_RETURN(auto_moderation_rule);
+_DISCORD_RECV_DECLARE(auto_moderation_rule);
 /** @} DiscordAPIAutoModeration */
 
 /** @addtogroup DiscordAPIChannel
  *  @{ */
-DISCORD_RETURN(channel);
-DISCORD_RETURN(message);
-DISCORD_RETURN(followed_channel);
-DISCORD_RETURN(thread_member);
-DISCORD_RETURN(thread_response_body);
+_DISCORD_RECV_DECLARE(channel);
+_DISCORD_RECV_DECLARE(message);
+_DISCORD_RECV_DECLARE(followed_channel);
+_DISCORD_RECV_DECLARE(thread_member);
+_DISCORD_RECV_DECLARE(thread_response_body);
 /** @} DiscordAPIChannel */
 
 /** @addtogroup DiscordAPIEmoji
  *  @{ */
-DISCORD_RETURN(emoji);
+_DISCORD_RECV_DECLARE(emoji);
 /** @} DiscordAPIEmoji */
 
 /** @addtogroup DiscordAPIGuild
  *  @{ */
-DISCORD_RETURN(guild);
-DISCORD_RETURN(guild_preview);
-DISCORD_RETURN(guild_member);
-DISCORD_RETURN(guild_widget);
-DISCORD_RETURN(guild_widget_settings);
-DISCORD_RETURN(ban);
-DISCORD_RETURN(role);
-DISCORD_RETURN(welcome_screen);
-DISCORD_RETURN(integration);
-DISCORD_RETURN(prune_count);
+_DISCORD_RECV_DECLARE(guild);
+_DISCORD_RECV_DECLARE(guild_preview);
+_DISCORD_RECV_DECLARE(guild_member);
+_DISCORD_RECV_DECLARE(guild_widget);
+_DISCORD_RECV_DECLARE(guild_widget_settings);
+_DISCORD_RECV_DECLARE(ban);
+_DISCORD_RECV_DECLARE(role);
+_DISCORD_RECV_DECLARE(welcome_screen);
+_DISCORD_RECV_DECLARE(integration);
+_DISCORD_RECV_DECLARE(prune_count);
 /** @} DiscordAPIGuild */
 
 /** @addtogroup DiscordAPIGuildScheduledEvent
  *  @{ */
-DISCORD_RETURN(guild_scheduled_event);
-DISCORD_RETURN(guild_scheduled_event_users);
+_DISCORD_RECV_DECLARE(guild_scheduled_event);
+_DISCORD_RECV_DECLARE(guild_scheduled_event_users);
 /** @} DiscordAPIGuildScheduledEvent */
 
 /** @addtogroup DiscordAPIGuildTemplate
  *  @{ */
-DISCORD_RETURN(guild_template);
+_DISCORD_RECV_DECLARE(guild_template);
 /** @} DiscordAPIGuildTemplate */
 
 /** @addtogroup DiscordAPIInvite
  *  @{ */
-DISCORD_RETURN(invite);
+_DISCORD_RECV_DECLARE(invite);
 /** @} DiscordAPIInvite */
 
 /** @addtogroup DiscordAPIStageInstance
  *  @{ */
-DISCORD_RETURN(stage_instance);
+_DISCORD_RECV_DECLARE(stage_instance);
 /** @} DiscordAPIStageInstance */
 
 /** @addtogroup DiscordAPISticker
  *  @{ */
-DISCORD_RETURN(sticker);
-DISCORD_RETURN(list_nitro_sticker_packs);
+_DISCORD_RECV_DECLARE(sticker);
+_DISCORD_RECV_DECLARE(list_nitro_sticker_packs);
 /** @} DiscordAPISticker */
 
 /** @addtogroup DiscordAPIUser
  *  @{ */
-DISCORD_RETURN(user);
-DISCORD_RETURN(connection);
+_DISCORD_RECV_DECLARE(user);
+_DISCORD_RECV_DECLARE(connection);
 /** @} DiscordAPIUser */
 
 /** @addtogroup DiscordAPIVoice
  *  @{ */
-DISCORD_RETURN(voice_region);
+_DISCORD_RECV_DECLARE(voice_region);
 /** @} DiscordAPIVoice */
 
 /** @addtogroup DiscordAPIWebhook
  *  @{ */
-DISCORD_RETURN(webhook);
+_DISCORD_RECV_DECLARE(webhook);
 /** @} DiscordAPIWebhook */
 
 /** @addtogroup DiscordAPIInteractionsApplicationCommand
  * @ingroup DiscordAPIInteractions
  *  @{ */
-DISCORD_RETURN(application_command);
-DISCORD_RETURN(application_command_permission);
-DISCORD_RETURN(guild_application_command_permission);
+_DISCORD_RECV_DECLARE(application_command);
+_DISCORD_RECV_DECLARE(application_command_permission);
+_DISCORD_RECV_DECLARE(guild_application_command_permission);
 /** @} DiscordAPIInteractionsApplicationCommand */
 
 /** @addtogroup DiscordAPIInteractionsReact
  * @ingroup DiscordAPIInteractions
  *  @{ */
-DISCORD_RETURN(interaction_response);
+_DISCORD_RECV_DECLARE(interaction_response);
 /** @} DiscordAPIInteractionsReact */
+
+#undef _DISCORD_RECV_DECLARE
 
 #endif /* DISCORD_RESPONSE_H */

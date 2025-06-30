@@ -61,7 +61,7 @@ void
 on_get_guild_template(struct discord *client,
                       const struct discord_message *event)
 {
-    struct discord_ret_guild_template ret = {
+    struct discord_recv_guild_template ret = {
         .done = &done,
         .fail = &fail,
         .keep = event,
@@ -73,7 +73,7 @@ void
 on_create_guild_template(struct discord *client,
                          const struct discord_message *event)
 {
-    struct discord_ret_guild_template ret = {
+    struct discord_recv_guild_template ret = {
         .done = &done,
         .fail = &fail,
         .keep = event,
@@ -91,7 +91,7 @@ void
 on_sync_guild_template(struct discord *client,
                        const struct discord_message *event)
 {
-    struct discord_ret_guild_template ret = {
+    struct discord_recv_guild_template ret = {
         .done = &done,
         .fail = &fail,
         .keep = event,

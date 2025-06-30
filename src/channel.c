@@ -14,7 +14,7 @@
 struct _discord_get_channel_at_pos {
     enum discord_channel_types type;
     int position;
-    struct discord_ret_channel ret;
+    struct discord_recv_channel ret;
 };
 
 /* XXX: placeholder until channel is obtained via cache at
@@ -57,10 +57,10 @@ discord_get_channel_at_pos(struct discord *client,
                            u64snowflake guild_id,
                            enum discord_channel_types type,
                            int position,
-                           struct discord_ret_channel *ret)
+                           struct discord_recv_channel *ret)
 {
     struct _discord_get_channel_at_pos *cxt;
-    struct discord_ret_channel channels_ret = { 0 };
+    struct discord_recv_channel channels_ret = { 0 };
 
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");
     CCORD_EXPECT(client, ret != NULL, CCORD_BAD_PARAMETER, "");
@@ -103,7 +103,7 @@ discord_get_channel_at_pos(struct discord *client,
 CCORDcode
 discord_get_channel(struct discord *client,
                     u64snowflake channel_id,
-                    struct discord_ret_channel *ret)
+                    struct discord_recv_channel *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -116,7 +116,7 @@ CCORDcode
 discord_modify_channel(struct discord *client,
                        u64snowflake channel_id,
                        struct discord_modify_channel *params,
-                       struct discord_ret_channel *ret)
+                       struct discord_recv_channel *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -133,7 +133,7 @@ CCORDcode
 discord_delete_channel(struct discord *client,
                        u64snowflake channel_id,
                        struct discord_delete_channel *params,
-                       struct discord_ret_channel *ret)
+                       struct discord_recv_channel *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -147,7 +147,7 @@ CCORDcode
 discord_get_channel_messages(struct discord *client,
                              u64snowflake channel_id,
                              struct discord_get_channel_messages *params,
-                             struct discord_ret_message *ret)
+                             struct discord_recv_message *ret)
 {
     struct discord_attributes attr = { 0 };
     struct queriec queriec;
@@ -200,7 +200,7 @@ CCORDcode
 discord_get_channel_message(struct discord *client,
                             u64snowflake channel_id,
                             u64snowflake message_id,
-                            struct discord_ret_message *ret)
+                            struct discord_recv_message *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -215,7 +215,7 @@ CCORDcode
 discord_create_message(struct discord *client,
                        u64snowflake channel_id,
                        struct discord_create_message *params,
-                       struct discord_ret_message *ret)
+                       struct discord_recv_message *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -241,7 +241,7 @@ CCORDcode
 discord_crosspost_message(struct discord *client,
                           u64snowflake channel_id,
                           u64snowflake message_id,
-                          struct discord_ret_message *ret)
+                          struct discord_recv_message *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -259,7 +259,7 @@ discord_create_reaction(struct discord *client,
                         u64snowflake message_id,
                         u64snowflake emoji_id,
                         const char emoji_name[],
-                        struct discord_ret *ret)
+                        struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     char *pct_emoji_name;
@@ -289,7 +289,7 @@ discord_delete_own_reaction(struct discord *client,
                             u64snowflake message_id,
                             u64snowflake emoji_id,
                             const char emoji_name[],
-                            struct discord_ret *ret)
+                            struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     char *pct_emoji_name;
@@ -320,7 +320,7 @@ discord_delete_user_reaction(struct discord *client,
                              u64snowflake user_id,
                              u64snowflake emoji_id,
                              const char emoji_name[],
-                             struct discord_ret *ret)
+                             struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     char *pct_emoji_name;
@@ -352,7 +352,7 @@ discord_get_reactions(struct discord *client,
                       u64snowflake emoji_id,
                       const char emoji_name[],
                       struct discord_get_reactions *params,
-                      struct discord_ret_user *ret)
+                      struct discord_recv_user *ret)
 {
     struct discord_attributes attr = { 0 };
     char emoji_endpoint[256];
@@ -402,7 +402,7 @@ CCORDcode
 discord_delete_all_reactions(struct discord *client,
                              u64snowflake channel_id,
                              u64snowflake message_id,
-                             struct discord_ret *ret)
+                             struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -420,7 +420,7 @@ discord_delete_all_reactions_for_emoji(struct discord *client,
                                        u64snowflake message_id,
                                        u64snowflake emoji_id,
                                        const char emoji_name[],
-                                       struct discord_ret *ret)
+                                       struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     char *pct_emoji_name;
@@ -449,7 +449,7 @@ discord_edit_message(struct discord *client,
                      u64snowflake channel_id,
                      u64snowflake message_id,
                      struct discord_edit_message *params,
-                     struct discord_ret_message *ret)
+                     struct discord_recv_message *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -469,7 +469,7 @@ discord_delete_message(struct discord *client,
                        u64snowflake channel_id,
                        u64snowflake message_id,
                        struct discord_delete_message *params,
-                       struct discord_ret *ret)
+                       struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -485,7 +485,7 @@ CCORDcode
 discord_bulk_delete_messages(struct discord *client,
                              u64snowflake channel_id,
                              struct discord_bulk_delete_messages *params,
-                             struct discord_ret *ret)
+                             struct discord_recv *ret)
 {
     const u64unix_ms now = discord_timestamp(client);
     struct discord_attributes attr = { 0 };
@@ -516,7 +516,7 @@ discord_edit_channel_permissions(
     u64snowflake channel_id,
     u64snowflake overwrite_id,
     struct discord_edit_channel_permissions *params,
-    struct discord_ret *ret)
+    struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -534,7 +534,7 @@ discord_edit_channel_permissions(
 CCORDcode
 discord_get_channel_invites(struct discord *client,
                             u64snowflake channel_id,
-                            struct discord_ret_invite *ret)
+                            struct discord_recv_invite *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -547,7 +547,7 @@ CCORDcode
 discord_create_channel_invite(struct discord *client,
                               u64snowflake channel_id,
                               struct discord_create_channel_invite *params,
-                              struct discord_ret_invite *ret)
+                              struct discord_recv_invite *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -566,7 +566,7 @@ discord_delete_channel_permission(
     u64snowflake channel_id,
     u64snowflake overwrite_id,
     struct discord_delete_channel_permission *params,
-    struct discord_ret *ret)
+    struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -581,7 +581,7 @@ CCORDcode
 discord_follow_news_channel(struct discord *client,
                             u64snowflake channel_id,
                             struct discord_follow_news_channel *params,
-                            struct discord_ret_followed_channel *ret)
+                            struct discord_recv_followed_channel *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -599,7 +599,7 @@ discord_follow_news_channel(struct discord *client,
 CCORDcode
 discord_trigger_typing_indicator(struct discord *client,
                                  u64snowflake channel_id,
-                                 struct discord_ret *ret)
+                                 struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -611,7 +611,7 @@ discord_trigger_typing_indicator(struct discord *client,
 CCORDcode
 discord_get_pinned_messages(struct discord *client,
                             u64snowflake channel_id,
-                            struct discord_ret_message *ret)
+                            struct discord_recv_message *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -625,7 +625,7 @@ discord_pin_message(struct discord *client,
                     u64snowflake channel_id,
                     u64snowflake message_id,
                     struct discord_pin_message *params,
-                    struct discord_ret *ret)
+                    struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -641,7 +641,7 @@ discord_unpin_message(struct discord *client,
                       u64snowflake channel_id,
                       u64snowflake message_id,
                       struct discord_unpin_message *params,
-                      struct discord_ret *ret)
+                      struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -657,7 +657,7 @@ discord_group_dm_add_recipient(struct discord *client,
                                u64snowflake channel_id,
                                u64snowflake user_id,
                                struct discord_group_dm_add_recipient *params,
-                               struct discord_ret *ret)
+                               struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -676,7 +676,7 @@ CCORDcode
 discord_group_dm_remove_recipient(struct discord *client,
                                   u64snowflake channel_id,
                                   u64snowflake user_id,
-                                  struct discord_ret *ret)
+                                  struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -693,7 +693,7 @@ discord_start_thread_with_message(
     u64snowflake channel_id,
     u64snowflake message_id,
     struct discord_start_thread_with_message *params,
-    struct discord_ret_channel *ret)
+    struct discord_recv_channel *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -714,7 +714,7 @@ discord_start_thread_without_message(
     struct discord *client,
     u64snowflake channel_id,
     struct discord_start_thread_without_message *params,
-    struct discord_ret_channel *ret)
+    struct discord_recv_channel *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -730,7 +730,7 @@ discord_start_thread_without_message(
 CCORDcode
 discord_join_thread(struct discord *client,
                     u64snowflake channel_id,
-                    struct discord_ret *ret)
+                    struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -744,7 +744,7 @@ CCORDcode
 discord_add_thread_member(struct discord *client,
                           u64snowflake channel_id,
                           u64snowflake user_id,
-                          struct discord_ret *ret)
+                          struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -758,7 +758,7 @@ discord_add_thread_member(struct discord *client,
 CCORDcode
 discord_leave_thread(struct discord *client,
                      u64snowflake channel_id,
-                     struct discord_ret *ret)
+                     struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -772,7 +772,7 @@ CCORDcode
 discord_remove_thread_member(struct discord *client,
                              u64snowflake channel_id,
                              u64snowflake user_id,
-                             struct discord_ret *ret)
+                             struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -786,7 +786,7 @@ discord_remove_thread_member(struct discord *client,
 CCORDcode
 discord_list_thread_members(struct discord *client,
                             u64snowflake channel_id,
-                            struct discord_ret_thread_member *ret)
+                            struct discord_recv_thread_member *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, channel_id != 0, CCORD_BAD_PARAMETER, "");
@@ -802,7 +802,7 @@ discord_list_public_archived_threads(
     u64snowflake channel_id,
     u64unix_ms before,
     int limit,
-    struct discord_ret_thread_response_body *ret)
+    struct discord_recv_thread_response_body *ret)
 {
     struct discord_attributes attr = { 0 };
     struct queriec queriec;
@@ -835,7 +835,7 @@ discord_list_private_archived_threads(
     u64snowflake channel_id,
     u64unix_ms before,
     int limit,
-    struct discord_ret_thread_response_body *ret)
+    struct discord_recv_thread_response_body *ret)
 {
     struct discord_attributes attr = { 0 };
     struct queriec queriec;
@@ -868,7 +868,7 @@ discord_list_joined_private_archived_threads(
     u64snowflake channel_id,
     u64unix_ms before,
     int limit,
-    struct discord_ret_thread_response_body *ret)
+    struct discord_recv_thread_response_body *ret)
 {
     struct discord_attributes attr = { 0 };
     struct queriec queriec;

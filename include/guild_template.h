@@ -22,7 +22,7 @@
  */
 CCORDcode discord_get_guild_template(struct discord *client,
                                      const char template_code[],
-                                     struct discord_ret_guild_template *ret);
+                                     struct discord_recv_guild_template *ret);
 
 /**
  * @brief Create a new guild based on a template
@@ -38,7 +38,7 @@ CCORDcode discord_create_guild_from_guild_template(
     struct discord *client,
     const char template_code[],
     struct discord_create_guild_from_guild_template *params,
-    struct discord_ret_guild *ret);
+    struct discord_recv_guild *ret);
 
 /**
  * @brief Returns @ref discord_guild_template from a guild
@@ -51,7 +51,7 @@ CCORDcode discord_create_guild_from_guild_template(
  */
 CCORDcode discord_get_guild_templates(struct discord *client,
                                       u64snowflake guild_id,
-                                      struct discord_ret_guild_template *ret);
+                                      struct discord_recv_guild_template *ret);
 
 /**
  * @brief Creates a template for the guild
@@ -67,7 +67,7 @@ CCORDcode discord_create_guild_template(
     struct discord *client,
     u64snowflake guild_id,
     struct discord_create_guild_template *params,
-    struct discord_ret_guild_template *ret);
+    struct discord_recv_guild_template *ret);
 
 /**
  * @brief Syncs the template to the guild's current state
@@ -82,7 +82,7 @@ CCORDcode discord_create_guild_template(
 CCORDcode discord_sync_guild_template(struct discord *client,
                                       u64snowflake guild_id,
                                       const char template_code[],
-                                      struct discord_ret_guild_template *ret);
+                                      struct discord_recv_guild_template *ret);
 
 /**
  * @brief Modifies the template's metadata
@@ -100,7 +100,7 @@ CCORDcode discord_modify_guild_template(
     u64snowflake guild_id,
     const char template_code[],
     struct discord_modify_guild_template *params,
-    struct discord_ret_guild_template *ret);
+    struct discord_recv_guild_template *ret);
 
 /**
  * @brief Deletes the guild template
@@ -116,7 +116,7 @@ CCORDcode discord_delete_guild_template(
     struct discord *client,
     u64snowflake guild_id,
     const char template_code[],
-    struct discord_ret_guild_template *ret);
+    struct discord_recv_guild_template *ret);
 
 /** @example guild-template.c
  * Demonstrates a couple use cases of the Guild Template API */

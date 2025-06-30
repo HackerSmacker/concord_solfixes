@@ -22,7 +22,7 @@
  */
 CCORDcode discord_get_sticker(struct discord *client,
                               u64snowflake sticker_id,
-                              struct discord_ret_sticker *ret);
+                              struct discord_recv_sticker *ret);
 
 /**
  * @brief Get a list of sticker packs available to Nitro subscribers
@@ -32,7 +32,7 @@ CCORDcode discord_get_sticker(struct discord *client,
  * @CCORD_return
  */
 CCORDcode discord_list_nitro_sticker_packs(
-    struct discord *client, struct discord_ret_list_nitro_sticker_packs *ret);
+    struct discord *client, struct discord_recv_list_nitro_sticker_packs *ret);
 
 /**
  * @brief Get stickers for the given guild
@@ -46,7 +46,7 @@ CCORDcode discord_list_nitro_sticker_packs(
  */
 CCORDcode discord_list_guild_stickers(struct discord *client,
                                       u64snowflake guild_id,
-                                      struct discord_ret_sticker *ret);
+                                      struct discord_recv_sticker *ret);
 
 /**
  * @brief Get a sticker for the given guild and sticker ID
@@ -62,7 +62,7 @@ CCORDcode discord_list_guild_stickers(struct discord *client,
 CCORDcode discord_get_guild_sticker(struct discord *client,
                                     u64snowflake guild_id,
                                     u64snowflake sticker_id,
-                                    struct discord_ret_sticker *ret);
+                                    struct discord_recv_sticker *ret);
 
 /**
  * @brief Modify the given sticker
@@ -80,7 +80,7 @@ CCORDcode discord_modify_guild_sticker(
     u64snowflake guild_id,
     u64snowflake sticker_id,
     struct discord_modify_guild_sticker *params,
-    struct discord_ret_sticker *ret);
+    struct discord_recv_sticker *ret);
 
 /**
  * @brief Delete the given sticker
@@ -95,7 +95,7 @@ CCORDcode discord_modify_guild_sticker(
 CCORDcode discord_delete_guild_sticker(struct discord *client,
                                        u64snowflake guild_id,
                                        u64snowflake sticker_id,
-                                       struct discord_ret *ret);
+                                       struct discord_recv *ret);
 
 /** @} DiscordAPISticker */
 

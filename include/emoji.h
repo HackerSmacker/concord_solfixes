@@ -22,7 +22,7 @@
  */
 CCORDcode discord_list_guild_emojis(struct discord *client,
                                     u64snowflake guild_id,
-                                    struct discord_ret_emoji *ret);
+                                    struct discord_recv_emoji *ret);
 
 /**
  * @brief Get a specific emoji from a guild
@@ -36,7 +36,7 @@ CCORDcode discord_list_guild_emojis(struct discord *client,
 CCORDcode discord_get_guild_emoji(struct discord *client,
                                   u64snowflake guild_id,
                                   u64snowflake emoji_id,
-                                  struct discord_ret_emoji *ret);
+                                  struct discord_recv_emoji *ret);
 
 /**
  * @brief Create a new emoji for the guild
@@ -51,7 +51,7 @@ CCORDcode discord_get_guild_emoji(struct discord *client,
 CCORDcode discord_create_guild_emoji(struct discord *client,
                                      u64snowflake guild_id,
                                      struct discord_create_guild_emoji *params,
-                                     struct discord_ret_emoji *ret);
+                                     struct discord_recv_emoji *ret);
 
 /**
  * @brief Modify the given emoji
@@ -68,7 +68,7 @@ CCORDcode discord_modify_guild_emoji(struct discord *client,
                                      u64snowflake guild_id,
                                      u64snowflake emoji_id,
                                      struct discord_modify_guild_emoji *params,
-                                     struct discord_ret_emoji *ret);
+                                     struct discord_recv_emoji *ret);
 
 /**
  * @brief Deletes the given emoji
@@ -85,7 +85,7 @@ CCORDcode discord_delete_guild_emoji(struct discord *client,
                                      u64snowflake guild_id,
                                      u64snowflake emoji_id,
                                      struct discord_delete_guild_emoji *params,
-                                     struct discord_ret *ret);
+                                     struct discord_recv *ret);
 
 /** @example emoji.c
  * Demonstrates a couple use cases of the Emoji API */

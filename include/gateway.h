@@ -60,7 +60,7 @@ CCORDcode discord_disconnect_guild_member(
     u64snowflake guild_id,
     u64snowflake user_id,
     struct discord_modify_guild_member *params,
-    struct discord_ret_guild_member *ret);
+    struct discord_recv_guild_member *ret);
 
 /**
  * @brief Helper function to add presence activities

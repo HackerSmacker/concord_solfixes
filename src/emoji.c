@@ -9,7 +9,7 @@
 CCORDcode
 discord_list_guild_emojis(struct discord *client,
                           u64snowflake guild_id,
-                          struct discord_ret_emoji *ret)
+                          struct discord_recv_emoji *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");
@@ -22,7 +22,7 @@ CCORDcode
 discord_get_guild_emoji(struct discord *client,
                         u64snowflake guild_id,
                         u64snowflake emoji_id,
-                        struct discord_ret_emoji *ret)
+                        struct discord_recv_emoji *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");
@@ -37,7 +37,7 @@ CCORDcode
 discord_create_guild_emoji(struct discord *client,
                            u64snowflake guild_id,
                            struct discord_create_guild_emoji *params,
-                           struct discord_ret_emoji *ret)
+                           struct discord_recv_emoji *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -55,7 +55,7 @@ discord_modify_guild_emoji(struct discord *client,
                            u64snowflake guild_id,
                            u64snowflake emoji_id,
                            struct discord_modify_guild_emoji *params,
-                           struct discord_ret_emoji *ret)
+                           struct discord_recv_emoji *ret)
 {
     struct discord_attributes attr = { 0 };
     struct ccord_szbuf body = { 0 };
@@ -75,7 +75,7 @@ discord_delete_guild_emoji(struct discord *client,
                            u64snowflake guild_id,
                            u64snowflake emoji_id,
                            struct discord_delete_guild_emoji *params,
-                           struct discord_ret *ret)
+                           struct discord_recv *ret)
 {
     struct discord_attributes attr = { 0 };
     CCORD_EXPECT(client, guild_id != 0, CCORD_BAD_PARAMETER, "");

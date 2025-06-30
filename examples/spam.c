@@ -47,7 +47,7 @@ on_spam_sync(struct discord *client, const struct discord_message *event)
     if (event->author->bot) return;
 
     for (size_t i = 0; i < 10; ++i) {
-        struct discord_ret_message ret = { .sync = DISCORD_SYNC_FLAG };
+        struct discord_recv_message ret = { .sync = DISCORD_SYNC_FLAG };
         struct discord_create_message params = { .content = SPAM[i] };
         discord_create_message(client, event->channel_id, &params, &ret);
     }
