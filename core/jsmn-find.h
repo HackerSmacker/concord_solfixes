@@ -10,10 +10,14 @@ extern "C" {
 #else
 
 #ifdef JSMN_HEADER
-#define OA_HASH_HEADER
+#  define OA_HASH_HEADER
+#  include "oa_hash.h"
+#  undef OA_HASH_HEADER
+#else
+#  define OA_HASH_STATIC
+#  include "oa_hash.h"
+#  undef OA_HASH_STATIC
 #endif /* JSMN_HEADER */
-#include "oa_hash.h"
-#undef OA_HASH_HEADER
 
 #define JSMNF_PAIR_ATTRS_const                                                \
     /** JSON object or array pair attributes */                               \
@@ -168,9 +172,6 @@ JSMN_API long jsmnf_unescape(char buf[],
 #include <stdlib.h>
 #include <string.h>
 
-#define OA_HASH_STATIC
-#include "oa_hash.h"
-#undef OA_HASH_STATIC
 
 struct _jsmnf_pair_mut {
     JSMNF_PAIR_ATTRS(mut);
