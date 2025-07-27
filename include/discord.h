@@ -210,6 +210,12 @@ void discord_shutdown_all(void);
 bool discord_shutdown_all_ongoing(void);
 
 /**
+ * @brief Backwards compatible alias for discord_shutdown_all()
+ * @deprecated since v3.0.0
+ */
+#define ccord_shutdown_async() discord_shutdown_all()
+
+/**
  * @brief Creates a Discord Client handle from a token
  * @see discord_get_logmod() to configure logging behavior
  *
