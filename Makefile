@@ -1,7 +1,12 @@
-PREFIX          ?= /usr/local
-SHAREDIR        ?= /usr/share
+# Concord top-level Makefile
+# Various options in this file can be tailored to the user's environment.
+
+# Installation prefix that the headers/libraries will be deposited into:
+PREFIX           = /usr/local
+SHAREDIR         = /usr/share
 DESTINCLUDE_DIR  = $(PREFIX)/include/concord
 DESTLIBDIR       = $(PREFIX)/lib
+# If you have a nonstandard pkg_config directory, specify it here:
 PKGCONFIGDIR     = $(SHAREDIR)/pkgconfig
 
 SRC_DIR       = src
@@ -12,15 +17,20 @@ GENCODECS_DIR = gencodecs
 CORE_DIR      = core
 EXAMPLES_DIR  = examples
 TEST_DIR      = test
+# Flags for compiling the shared version of Concord:
+SOFLAGS       = -fPIC
+DYFLAGS       = -fPIC 
+# C compiler debug options:
+DEBUG_FLAGS   = -O0 -g
 
-SOFLAGS     = -fPIC
-DYFLAGS     = -fPIC 
-DEBUG_FLAGS = -O0 -g
+GIT_BRANCHES  = master dev
+GIT_TARGETS   = latest latest-dev
 
-GIT_BRANCHES = master dev
-GIT_TARGETS  = latest latest-dev
+# If you are using Solaris, comment out the second line.
+INSTALL       = install
+# INSTALL       = /usr/ucb/install
 
-CFLAGS ?= -O2
+CFLAGS = -O2
 
 all: static
 
@@ -40,12 +50,13 @@ shared_osx:
 install:
 	@ mkdir -p $(DESTLIBDIR)
 	@ mkdir -p $(DESTINCLUDE_DIR)
-	install -d $(DESTLIBDIR)
-	install -m 644 $(LIBDIR)/* $(DESTLIBDIR)
-	install -d $(DESTINCLUDE_DIR)
-	install -m 644 $(INCLUDE_DIR)/*.h $(CORE_DIR)/*.h $(GENCODECS_DIR)/*.h \
+	$(INSTALL) -d $(DESTLIBDIR)
+	$(INSTALL) -m 644 $(LIBDIR)/* $(DESTLIBDIR)
+	$(INSTALL) -d $(DESTINCLUDE_DIR)
+	$(INSTALL) -m 644 $(INCLUDE_DIR)/*.h $(CORE_DIR)/*.h $(GENCODECS_DIR)/*.h \
 	               $(DESTINCLUDE_DIR)
-	install -D concord.pc $(PKGCONFIGDIR)/concord.pc
+	$(INSTALL) -d $(PKGCONFIGDIR)
+	$(INSTALL) -m 644 concord.pc $(PKGCONFIGDIR)/concord.pc
 
 uninstall:
 	rm -rf $(PREFIX)/include/concord

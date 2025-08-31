@@ -251,6 +251,11 @@ $ CFLAGS="-pthread -lpthread" make
 In some cases, you might want to link Concord into a shared object, or link it as a shared object into another shared
 object. In that case, you will need to compile Concord with `CFLAGS="-fpic" make`. 
 
+### Special notes about compiling Concord with C compilers besides GCC or Clang
+Concord __will__ compile with compilers that aren't GCC or Clang, but you may need to do some work. For instance, support exists for Sun Studio C
+(specifically, Oracle Developer Studio 12.6), but you will need to change options in the Makefiles (look for CFLAGS and WFLAGS) to prevent errors
+about unknown compiler option flags.
+
 ## Configuring Concord
 
 [discord\_config\_init()][discord-config-init] is the initialization method that allows configuring your bot without recompiling.

@@ -4,6 +4,11 @@
 #include <sys/ioctl.h>
 #include <stdlib.h>
 
+#ifdef __sun
+#include <stropts.h>
+#include <sys/filio.h>
+#endif
+
 #include "concord-error.h"
 #include "concord-notifier.h"
 #define LOGMOD_FALLBACK_APPLICATION_ID "CORE"
