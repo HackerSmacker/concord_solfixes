@@ -2,9 +2,9 @@
 # If you are cross-compiling, do NOT set this to the target preprocessor!
 # This needs to run on the host -- that's why $(CC) and $(CPP) are
 # available here to be set.
-CPP = cc -E
-CC = cc
-HOSTCC = cc
+CC = gcc
+CPP = $(CC) -E
+HOSTCC = gcc
 
 TOP = ..
 
@@ -51,7 +51,7 @@ HEADERS = $(API_DIR)/application.h           \
           $(API_DIR)/voice_connections.h     \
           $(API_DIR)/webhook.h
 
-CFLAGS   ?= -O2
+CFLAGS    = -O2
 CFLAGS   += -I. -I$(API_DIR) -I$(INCLUDE_DIR) -I$(CORE_DIR)
 DFLAGS   += -DGENCODECS_INIT -DGENCODECS_JSON_ENCODER -DGENCODECS_JSON_DECODER
 CPPFLAGS += -nostdinc -P
@@ -63,36 +63,36 @@ DOXYGEN_DESC = "/**\n @file $@\n @author Cogmasters\n @brief Generated code\n*/"
 
 all: $(OUT_O)
 
-$(PP): $(PP).c
-	$(HOSTCC) $(CFLAGS) $< -o $@
+gencodecs-pp: gencodecs-pp.c
+	$(HOSTCC) $(CFLAGS) gencodecs-pp.c -o gencodecs-pp
 
 $(OUT_O): $(OUT_C) $(OUT_H)
 	$(CC) -c $(CFLAGS) $< -o $@
-$(OUT_H): $(INPUT) $(PP)
+$(OUT_H): $(INPUT) gencodecs-pp
 	@ echo "Generating header"
 	@ echo "#ifndef $(HEADER_TAG)" > $@
 	@ echo "#define $(HEADER_TAG)" >> $@
-	$(CPP) $(CFLAGS) -DGENCODECS_HEADER -DGENCODECS_DATA $(CPPFLAGS) $(INPUT) | ./$(PP) >> $@
-	$(CPP) $(CFLAGS) $(DFLAGS) -DGENCODECS_HEADER $(CPPFLAGS) $(INPUT) | ./$(PP) >> $@
+	$(CPP) $(CFLAGS) -DGENCODECS_HEADER -DGENCODECS_DATA $(CPPFLAGS) $(INPUT) | ./gencodecs-pp >> $@
+	$(CPP) $(CFLAGS) $(DFLAGS) -DGENCODECS_HEADER $(CPPFLAGS) $(INPUT) | ./gencodecs-pp >> $@
 	@ echo "#endif /* $(HEADER_TAG) */" >> $@
-$(OUT_C): $(INPUT) $(PP)
+$(OUT_C): $(INPUT) gencodecs-pp
 	@ echo "Generating forward definitions"
 	@ echo "#include \"$(OUT_H)\"" > $(OUT_C)
-	$(CPP) $(CFLAGS) $(DFLAGS) -DGENCODECS_FORWARD -DGENCODECS_DATA $(CPPFLAGS) $(INPUT) | ./$(PP) >> $(OUT_C)
+	$(CPP) $(CFLAGS) $(DFLAGS) -DGENCODECS_FORWARD -DGENCODECS_DATA $(CPPFLAGS) $(INPUT) | ./gencodecs-pp >> $(OUT_C)
 	@ echo "Generating source"	
-	$(CPP) $(CFLAGS) $(DFLAGS) -DGENCODECS_DATA $(CPPFLAGS) $(INPUT) | ./$(PP) >> $(OUT_C)
+	$(CPP) $(CFLAGS) $(DFLAGS) -DGENCODECS_DATA $(CPPFLAGS) $(INPUT) | ./gencodecs-pp >> $(OUT_C)
 
 headers: $(HEADERS)
 
-$(HEADERS): $(INPUT) $(PP)
+$(HEADERS): $(INPUT) gencodecs-pp
 
 .SUFFIXES: .PRE.h .h
 .PRE.h.h:
 	@ echo $(DOXYGEN_DESC) > $(DOCS_DIR)/$@
 	@ echo "#ifndef $(HEADER_TAG)" >> $(DOCS_DIR)/$@
 	@ echo "#define $(HEADER_TAG)" >> $(DOCS_DIR)/$@
-	$(CPP) $(CFLAGS) -DGENCODECS_HEADER -DGENCODECS_DATA -DGENCODECS_READ=\"$<\" $(CPPFLAGS) -CC $(INPUT) | ./$(PP) >> $(DOCS_DIR)/$@
-	$(CPP) $(CFLAGS) $(DFLAGS) -DGENCODECS_HEADER -DGENCODECS_READ=\"$<\" $(CPPFLAGS) $(INPUT) | ./$(PP) >> $(DOCS_DIR)/$@
+	$(CPP) $(CFLAGS) -DGENCODECS_HEADER -DGENCODECS_DATA -DGENCODECS_READ=\"$<\" $(CPPFLAGS) -CC $(INPUT) | ./gencodecs-pp >> $(DOCS_DIR)/$@
+	$(CPP) $(CFLAGS) $(DFLAGS) -DGENCODECS_HEADER -DGENCODECS_READ=\"$<\" $(CPPFLAGS) $(INPUT) | ./gencodecs-pp >> $(DOCS_DIR)/$@
 	@ echo "#endif /* $(HEADER_TAG) */" >> $(DOCS_DIR)/$@
 
 echo:
@@ -103,6 +103,6 @@ echo:
 	@ echo 'OUT_O: $(OUT_O)'
 
 clean:
-	@ rm -f $(OUT_H) $(OUT_C) $(OUT_O) $(PP) $(DOCS_DIR)/$(API_DIR)/*.h
+	@ rm -f $(OUT_H) $(OUT_C) $(OUT_O) gencodecs-pp $(DOCS_DIR)/$(API_DIR)/*.h
 
 .PHONY: headers echo clean

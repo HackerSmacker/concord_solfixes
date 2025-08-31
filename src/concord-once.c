@@ -6,6 +6,11 @@
 #include <poll.h>
 #include <sys/ioctl.h>
 
+#ifdef __sun
+#include <stropts.h>
+#include <sys/filio.h>
+#endif
+
 #include "error.h"
 #include "discord-worker.h"
 

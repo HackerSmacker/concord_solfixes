@@ -55,6 +55,7 @@ OBJS += concord-once.o             \
         voice.o                    \
         webhook.o
 
+# Note: most of these options are exclusive to GNU C and Clang. See the README for more.
 WFLAGS  = -Wall -Wextra -Wshadow -Wdouble-promotion -Wconversion -Wpedantic
 CFLAGS += -std=c99 -pthread -D_XOPEN_SOURCE=600 -DLOG_USE_COLOR \
           -I$(INCLUDE_DIR) -I$(CORE_DIR) -I$(GENCODECS_DIR) -I$(PREFIX)/include

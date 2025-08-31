@@ -1,6 +1,7 @@
 # This Makefile assumes the top folder has been built
+# Invoke this with "make examples" from the top folder!
 TOP = ..
-CC ?= cc
+CC = gcc
 
 CORE_DIR      = $(TOP)/core
 INCLUDE_DIR   = $(TOP)/include

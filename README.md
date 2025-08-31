@@ -169,6 +169,14 @@ Alternatively, you can use an AUR helper:
 yay -S concord-git
 ```
 
+#### Solaris 10/11, Illumos-based Systems
+* Important: update the Makefiles (`src/Makefile`, `core/Makefile`, `gencodecs/Makefile`) and update the CFLAGS options!
+You can compile Concord on Solaris systems with GCC, Clang, or Sun C (and its successor, Oracle Developer Studio). If you use
+a compiler that isn't GCC or Clang, you will need to ensure cc is in your path! 
+```console
+make
+```
+
 ## Setting up your environment
 
 ### Clone Concord into your workspace

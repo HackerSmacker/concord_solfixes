@@ -1,4 +1,8 @@
-PREFIX          ?= /usr/local
+# Concord UNIX Makefile.
+# For tailoring, please see the comments in this file!
+
+# Installation prefix:
+PREFIX           = /usr/local
 DESTINCLUDE_DIR  = $(PREFIX)/include/concord
 DESTLIBDIR       = $(PREFIX)/lib
 
@@ -11,14 +15,17 @@ CORE_DIR      = core
 EXAMPLES_DIR  = examples
 TEST_DIR      = test
 
-SOFLAGS     = -fPIC
-DYFLAGS     = -fPIC 
-DEBUG_FLAGS = -O0 -g
+# For compiling the shared library version of Concord:
+SOFLAGS       = -fPIC
+DYFLAGS       = -fPIC 
+DEBUG_FLAGS   = -O0 -g
+GIT_BRANCHES  = master dev
+GIT_TARGETS   = latest latest-dev
 
-GIT_BRANCHES = master dev
-GIT_TARGETS  = latest latest-dev
-
-CFLAGS ?= -O2
+# C compiler options. If you need to specify other library
+# search paths, add these like so
+# CFLAGS = -O2 -I/usr/local/include
+CFLAGS = -O2
 
 all: static
 
